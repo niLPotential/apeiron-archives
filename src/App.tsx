@@ -1,0 +1,17 @@
+import { useState } from "react";
+import { Button } from "./components/ui/button.tsx";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <Button
+      onClick={() => setCount((count) => count + 1)}
+    >
+      {/* <button type="button"> */}
+      count is {count}
+    </Button>
+  );
+}
+
+export default App;
