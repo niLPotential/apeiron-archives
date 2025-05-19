@@ -1,48 +1,37 @@
-import { Circle, Monitor, Smartphone } from "lucide-react";
-import { useSearchParams } from "react-router";
-import { ToggleGroup } from "./components/ui/toggle-group.tsx";
-import { VersionCombobox } from "./components/version-combobox.tsx";
+import { X } from "lucide-react";
+import { Button } from "./components/ui/button.tsx";
+import { IconButton } from "./components/ui/icon-button.tsx";
+import { TagsInput } from "./components/ui/tags-input.tsx";
 
 function App() {
-  const [searchParams] = useSearchParams();
-  const size = searchParams.get("size") || "all";
-  const version = searchParams.get("version") || null;
-
   return (
-    <>
-      <div>
-        <SizeToggleGroup />
-        <p>{size}</p>
-      </div>
-      <div>
-        <p>{version}</p>
-        <VersionCombobox />
-      </div>
-    </>
-  );
-}
-
-function SizeToggleGroup() {
-  const [_searchParams, setSearchParams] = useSearchParams();
-
-  return (
-    <ToggleGroup.Root
-      defaultValue={["all"]}
-      deselectable={false}
-      name="size"
-      onValueChange={({ value }: { value: string }) =>
-        setSearchParams({ size: value })}
-    >
-      <ToggleGroup.Item value="all" aria-label="Show all wallpapers">
-        <Circle />
-      </ToggleGroup.Item>
-      <ToggleGroup.Item value="deskop" aria-label="Show desktop wallpapers">
-        <Monitor />
-      </ToggleGroup.Item>
-      <ToggleGroup.Item value="mobile" aria-label="Show mobile wallpapers">
-        <Smartphone />
-      </ToggleGroup.Item>
-    </ToggleGroup.Root>
+    <TagsInput.Root>
+      <TagsInput.Context>
+        {(context) => (
+          <>
+            <TagsInput.Label>검색</TagsInput.Label>
+            <TagsInput.Control>
+              {context.value.map((value, index) => (
+                <TagsInput.Item key={index} index={index} value={value}>
+                  <TagsInput.ItemPreview>
+                    <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                    <TagsInput.ItemDeleteTrigger asChild>
+                      <IconButton variant="link" size="xs">
+                        <X />
+                      </IconButton>
+                    </TagsInput.ItemDeleteTrigger>
+                  </TagsInput.ItemPreview>
+                </TagsInput.Item>
+              ))}
+              <TagsInput.Input placeholder="Add Framework" />
+            </TagsInput.Control>
+            <TagsInput.ClearTrigger asChild>
+              <Button variant="outline">Clear</Button>
+            </TagsInput.ClearTrigger>
+          </>
+        )}
+      </TagsInput.Context>
+    </TagsInput.Root>
   );
 }
 
