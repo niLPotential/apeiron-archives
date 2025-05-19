@@ -1,4 +1,5 @@
-import { Version } from "./versions.ts";
+import data from "./data.json" with { type: "json" };
+// import { Version } from "./versions.ts";
 
 type Size = "desktop" | "mobile";
 
@@ -9,9 +10,11 @@ export function isSize(str: string): str is Size {
 interface Wallpaper {
   weight: number;
   pictureUrl: string;
-  version: Version;
-  characters: string[]; // TODO: Configure characters as constant type
-  size: Size;
+  // version: Version;
+  // characters: string[]; // TODO: Configure characters as constant type
+  // size: Size;
 }
 
-export const wallpapers: Wallpaper[] = [];
+export const wallpapers: Wallpaper[] = data.map((d) => {
+  return { weight: d.weight, pictureUrl: d.pictureUrl };
+});
