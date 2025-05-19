@@ -20,8 +20,7 @@
     "./node_modules",
     "./dist",
     "./.vite",
-    "./styled-system",
-    "./src/components/ui"
+    "./styled-system"
   ],
   "unstable": ["sloppy-imports"],
   "imports": {

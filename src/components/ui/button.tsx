@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Center, styled } from "styled-system/jsx";
+import { Center, styled } from "../../../styled-system/jsx";
 import { Spinner } from "./spinner";
 import {
   Button as StyledButton,

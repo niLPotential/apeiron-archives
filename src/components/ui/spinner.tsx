@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { styled } from "styled-system/jsx";
+import { styled } from "../../../styled-system/jsx";
 import {
   Spinner as StyledSpinner,
   type SpinnerProps as StyledSpinnerProps,
