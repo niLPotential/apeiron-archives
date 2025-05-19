@@ -41,7 +41,6 @@ function App() {
 
   return (
     <>
-      <p>{collection.toString()}</p>
       <TagsInput.Root editable={false}>
         <TagsInput.Context>
           {(context) => (
@@ -64,14 +63,12 @@ function App() {
                 collection={collection}
                 inputBehavior="autohighlight"
                 onInputValueChange={handleInputChange}
-                onValueChange={({ items }: { items: Item[] }) => {
-                  items.forEach((item) => context.addValue(item.label));
+                onSelect={({ itemValue }: { itemValue: string }) => {
+                  context.addValue(itemValue);
                 }}
               >
                 <Combobox.Control>
-                  <TagsInput.Input asChild>
-                    <Combobox.Input />
-                  </TagsInput.Input>
+                  <Combobox.Input />
                 </Combobox.Control>
                 <Combobox.Positioner>
                   <Combobox.Content>
