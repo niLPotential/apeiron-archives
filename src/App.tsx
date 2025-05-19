@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button } from "./components/ui/button.tsx";
 import { Combobox, createListCollection } from "./components/ui/combobox.tsx";
-import { versionNames, versions } from "./data/versions.ts";
+import { type Version, versionNames, versions } from "./data/versions.ts";
 
-const versionsCollection = createListCollection({
+const initialVersionCollection = createListCollection({
   "items": versions.map((version) => {
     return {
       "label": `${version}: ${versionNames[version]}`,
@@ -15,6 +15,21 @@ const versionsCollection = createListCollection({
 function App() {
   const [count, setCount] = useState(0);
 
+  const [versionCollection, setVersionCollection] = useState(
+    initialVersionCollection,
+  );
+  function handleInputChange({ inputValue }: Combobox.InputValueChangeDetails) {
+    const filtered = initialVersionCollection.items.filter((item) =>
+      item.label.includes(inputValue)
+    );
+    setVersionCollection(createListCollection({ items: filtered }));
+  }
+
+  const [version, setVersion] = useState<Version | null>(null);
+  function handleValueChange({ value }: Combobox.ValueChangeDetails) {
+    setVersion(value[0] as Version ?? null);
+  }
+
   return (
     <>
       <Button
@@ -22,7 +37,14 @@ function App() {
       >
         count is {count}
       </Button>
-      <Combobox.Root collection={versionsCollection}>
+      <p>{version}</p>
+      <Combobox.Root
+        openOnClick
+        name="version"
+        collection={versionCollection}
+        onInputValueChange={handleInputChange}
+        onValueChange={handleValueChange}
+      >
         <Combobox.Label>버전</Combobox.Label>
         <Combobox.Control>
           <Combobox.Input placehoder="버전을 입력하세요" />
@@ -30,10 +52,9 @@ function App() {
         <Combobox.Positioner>
           <Combobox.Content>
             <Combobox.ItemGroup>
-              {versionsCollection.items.map((item) => (
+              {initialVersionCollection.items.map((item) => (
                 <Combobox.Item key={item.value} item={item}>
                   <Combobox.ItemText>{item.label}</Combobox.ItemText>
-                  <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
                 </Combobox.Item>
               ))}
             </Combobox.ItemGroup>
