@@ -2,6 +2,10 @@ export function isVersion(str: string): str is Version {
   return versions.includes(str as Version);
 }
 
+export function isVersionName(str: string): str is VersionName {
+  return Object.values(versionNames).includes(str);
+}
+
 export const versions = [
   "1.0",
   "1.1",
@@ -28,4 +32,6 @@ export const versionNames: Record<Version, string> = {
   "1.7": "별은 빛나건만",
   "1.8": "안녕, 라야시키",
   "1.9": "고독의 노래",
-};
+} as const;
+
+export type VersionName = (typeof versionNames)[Version];

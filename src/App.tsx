@@ -2,13 +2,15 @@ import { X } from "lucide-react";
 import { Button } from "./components/ui/button.tsx";
 import { IconButton } from "./components/ui/icon-button.tsx";
 import { TagsInput } from "./components/ui/tags-input.tsx";
-import { isVersion } from "./data/versions.ts";
+import { isVersion, isVersionName } from "./data/versions.ts";
+import { isSize } from "./data/wallpapers.ts";
 
 function App() {
   return (
     <TagsInput.Root
       validate={({ inputValue }: { inputValue: string }) =>
-        isVersion(inputValue)}
+        isVersion(inputValue) || isSize(inputValue) ||
+        isVersionName(inputValue)}
     >
       <TagsInput.Context>
         {(context) => (
