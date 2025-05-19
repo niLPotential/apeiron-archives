@@ -1,6 +1,8 @@
 import { Circle, Monitor, Smartphone } from "lucide-react";
 import { useSearchParams } from "react-router";
+import type { ToggleGroupValueChangeDetails } from "@ark-ui/react";
 import { ToggleGroup } from "./ui/toggle-group.tsx";
+
 
 export function SizeToggleGroup() {
   const [_searchParams, setSearchParams] = useSearchParams();
@@ -9,8 +11,7 @@ export function SizeToggleGroup() {
     <ToggleGroup.Root
       defaultValue={["all"]}
       deselectable={false}
-      name="size"
-      onValueChange={({ value }: { value: string }) =>
+      onValueChange={({ value }: ToggleGroupValueChangeDetails ) =>
         setSearchParams({ size: value })}
     >
       <ToggleGroup.Item value="all" aria-label="Show all wallpapers">

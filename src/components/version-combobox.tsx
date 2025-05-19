@@ -37,7 +37,7 @@ export function VersionCombobox() {
     >
       <Combobox.Label>버전</Combobox.Label>
       <Combobox.Control>
-        <Combobox.Input placehoder="버전을 입력하세요" />
+        <Combobox.Input placeholder="버전을 입력하세요" />
       </Combobox.Control>
       <Combobox.Positioner>
         <Combobox.Content>
