@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { Circle, Monitor, Smartphone } from "lucide-react";
-import { Button } from "./components/ui/button.tsx";
+import { useState } from "react";
+import { type SetURLSearchParams, useSearchParams } from "react-router";
 import { Combobox, createListCollection } from "./components/ui/combobox.tsx";
 import { ToggleGroup } from "./components/ui/toggle-group.tsx";
 import { type Version, versionNames, versions } from "./data/versions.ts";
@@ -15,7 +15,8 @@ const initialVersionCollection = createListCollection({
 });
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const size = searchParams.get("size") || "all";
 
   const [versionCollection, setVersionCollection] = useState(
     initialVersionCollection,
@@ -34,27 +35,9 @@ function App() {
 
   return (
     <>
-      <Button
-        onClick={() => setCount((count) => count + 1)}
-      >
-        count is {count}
-      </Button>
       <div>
-        <ToggleGroup.Root
-          defaultValue={["all"]}
-          deselectable={false}
-          onValueChange={() => {}}
-        >
-          <ToggleGroup.Item value="all" aria-label="Show all wallpapers">
-            <Circle />
-          </ToggleGroup.Item>
-          <ToggleGroup.Item value="deskop" aria-label="Show desktop wallpapers">
-            <Monitor />
-          </ToggleGroup.Item>
-          <ToggleGroup.Item value="mobile" aria-label="Show mobile wallpapers">
-            <Smartphone />
-          </ToggleGroup.Item>
-        </ToggleGroup.Root>
+        <SizeToggleGroup setSearchParams={setSearchParams} />
+        <p>{size}</p>
       </div>
       <div>
         <p>{version}</p>
@@ -83,6 +66,30 @@ function App() {
         </Combobox.Root>
       </div>
     </>
+  );
+}
+
+function SizeToggleGroup(
+  { setSearchParams }: { setSearchParams: SetURLSearchParams },
+) {
+  return (
+    <ToggleGroup.Root
+      defaultValue={["all"]}
+      deselectable={false}
+      name="size"
+      onValueChange={({ value }: { value: string }) =>
+        setSearchParams({ size: value })}
+    >
+      <ToggleGroup.Item value="all" aria-label="Show all wallpapers">
+        <Circle />
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="deskop" aria-label="Show desktop wallpapers">
+        <Monitor />
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="mobile" aria-label="Show mobile wallpapers">
+        <Smartphone />
+      </ToggleGroup.Item>
+    </ToggleGroup.Root>
   );
 }
 
