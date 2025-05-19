@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Circle, Monitor, Smartphone } from "lucide-react";
 import { Button } from "./components/ui/button.tsx";
 import { Combobox, createListCollection } from "./components/ui/combobox.tsx";
 import { ToggleGroup } from "./components/ui/toggle-group.tsx";
@@ -44,14 +45,14 @@ function App() {
           deselectable={false}
           onValueChange={() => {}}
         >
-          <ToggleGroup.Item value="all">
-            All
+          <ToggleGroup.Item value="all" aria-label="Show all wallpapers">
+            <Circle />
           </ToggleGroup.Item>
-          <ToggleGroup.Item value="deskop">
-            Desktop
+          <ToggleGroup.Item value="deskop" aria-label="Show desktop wallpapers">
+            <Monitor />
           </ToggleGroup.Item>
-          <ToggleGroup.Item value="mobile">
-            Mobile
+          <ToggleGroup.Item value="mobile" aria-label="Show mobile wallpapers">
+            <Smartphone />
           </ToggleGroup.Item>
         </ToggleGroup.Root>
       </div>
