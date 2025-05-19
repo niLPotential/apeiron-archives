@@ -1,6 +1,6 @@
 import { Circle, Monitor, Smartphone } from "lucide-react";
 import { useState } from "react";
-import { type SetURLSearchParams, useSearchParams } from "react-router";
+import { useSearchParams } from "react-router";
 import { Combobox, createListCollection } from "./components/ui/combobox.tsx";
 import { ToggleGroup } from "./components/ui/toggle-group.tsx";
 import { type Version, versionNames, versions } from "./data/versions.ts";
@@ -16,21 +16,20 @@ const initialVersionCollection = createListCollection({
 });
 
 function App() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const size = searchParams.get("size") || "all";
   const version = searchParams.get("version") || null;
 
   return (
     <>
       <div>
-        <SizeToggleGroup setSearchParams={setSearchParams} />
+        <SizeToggleGroup />
         <p>{size}</p>
       </div>
       <div>
         <p>{version}</p>
         <VersionCombobox
           versionCollection={initialVersionCollection}
-          setSearchParams={setSearchParams}
         />
       </div>
     </>
@@ -38,11 +37,11 @@ function App() {
 }
 
 function VersionCombobox(
-  { versionCollection, setSearchParams }: {
+  { versionCollection }: {
     versionCollection: ListCollection<{ label: string; value: Version }>;
-    setSearchParams: SetURLSearchParams;
   },
 ) {
+  const [_searchParams, setSearchParams] = useSearchParams();
   const [versions, setVersions] = useState(versionCollection);
 
   function handleInputChange({ inputValue }: Combobox.InputValueChangeDetails) {
@@ -83,9 +82,9 @@ function VersionCombobox(
   );
 }
 
-function SizeToggleGroup(
-  { setSearchParams }: { setSearchParams: SetURLSearchParams },
-) {
+function SizeToggleGroup() {
+  const [_searchParams, setSearchParams] = useSearchParams();
+
   return (
     <ToggleGroup.Root
       defaultValue={["all"]}
