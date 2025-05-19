@@ -13,16 +13,20 @@ async function fetchData(current: number) {
   );
 }
 
-const file = await Deno.create("data.json");
+const file = await Deno.create("./src/data/data.json");
 const writer = file.writable.getWriter();
-await writer.write(new TextEncoder().encode("{"));
+await writer.write(new TextEncoder().encode("["));
 for (let i = 1; i < 40; i++) {
   const resp = await fetchData(i);
-  await writer.write(
-    new TextEncoder().encode(`"${i}": ${JSON.stringify(await resp.json())}`),
-  );
+  const json = await resp.json();
+  if (json.data.pageData.length === 0) break;
+  for (const data of json.data.pageData) {
+    await writer.write(
+      new TextEncoder().encode(`${JSON.stringify(data)},`),
+    );
+  }
   setTimeout(() => console.log(i, "th page fetched"), 500);
 }
-await writer.write(new TextEncoder().encode("}"));
+await writer.write(new TextEncoder().encode("]"));
 
 await writer.close();
