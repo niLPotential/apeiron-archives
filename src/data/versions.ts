@@ -1,3 +1,7 @@
+export function isVersion(str: string): str is Version {
+  return versions.includes(str as Version);
+}
+
 export const versions = [
   "1.0",
   "1.1",
