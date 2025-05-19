@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "./components/ui/button.tsx";
 import { Combobox, createListCollection } from "./components/ui/combobox.tsx";
+import { ToggleGroup } from "./components/ui/toggle-group.tsx";
 import { type Version, versionNames, versions } from "./data/versions.ts";
 
 const initialVersionCollection = createListCollection({
@@ -37,30 +38,49 @@ function App() {
       >
         count is {count}
       </Button>
-      <p>{version}</p>
-      <Combobox.Root
-        openOnClick
-        name="version"
-        collection={versionCollection}
-        onInputValueChange={handleInputChange}
-        onValueChange={handleValueChange}
-      >
-        <Combobox.Label>버전</Combobox.Label>
-        <Combobox.Control>
-          <Combobox.Input placehoder="버전을 입력하세요" />
-        </Combobox.Control>
-        <Combobox.Positioner>
-          <Combobox.Content>
-            <Combobox.ItemGroup>
-              {initialVersionCollection.items.map((item) => (
-                <Combobox.Item key={item.value} item={item}>
-                  <Combobox.ItemText>{item.label}</Combobox.ItemText>
-                </Combobox.Item>
-              ))}
-            </Combobox.ItemGroup>
-          </Combobox.Content>
-        </Combobox.Positioner>
-      </Combobox.Root>
+      <div>
+        <ToggleGroup.Root
+          defaultValue={["all"]}
+          deselectable={false}
+          onValueChange={() => {}}
+        >
+          <ToggleGroup.Item value="all">
+            All
+          </ToggleGroup.Item>
+          <ToggleGroup.Item value="deskop">
+            Desktop
+          </ToggleGroup.Item>
+          <ToggleGroup.Item value="mobile">
+            Mobile
+          </ToggleGroup.Item>
+        </ToggleGroup.Root>
+      </div>
+      <div>
+        <p>{version}</p>
+        <Combobox.Root
+          openOnClick
+          name="version"
+          collection={versionCollection}
+          onInputValueChange={handleInputChange}
+          onValueChange={handleValueChange}
+        >
+          <Combobox.Label>버전</Combobox.Label>
+          <Combobox.Control>
+            <Combobox.Input placehoder="버전을 입력하세요" />
+          </Combobox.Control>
+          <Combobox.Positioner>
+            <Combobox.Content>
+              <Combobox.ItemGroup>
+                {initialVersionCollection.items.map((item) => (
+                  <Combobox.Item key={item.value} item={item}>
+                    <Combobox.ItemText>{item.label}</Combobox.ItemText>
+                  </Combobox.Item>
+                ))}
+              </Combobox.ItemGroup>
+            </Combobox.Content>
+          </Combobox.Positioner>
+        </Combobox.Root>
+      </div>
     </>
   );
 }
