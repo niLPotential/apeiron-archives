@@ -7,8 +7,8 @@ export function isSize(str: string): str is Size {
 }
 
 interface Wallpaper {
-  id: number;
-  src: string;
+  weight: number;
+  pictureUrl: string;
   version: Version;
   characters: string[]; // TODO: Configure characters as constant type
   size: Size;
