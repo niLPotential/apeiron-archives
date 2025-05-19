@@ -1,11 +1,17 @@
 import { Version } from "./versions.ts";
 
+type Size = "desktop" | "mobile";
+
+export function isSize(str: string): str is Size {
+  return str === "desktop" || str === "mobile";
+}
+
 interface Wallpaper {
   id: number;
   src: string;
   version: Version;
   characters: string[]; // TODO: Configure characters as constant type
-  size: "desktop" | "mobile";
+  size: Size;
 }
 
 export const wallpapers: Wallpaper[] = [];
