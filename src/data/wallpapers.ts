@@ -8,13 +8,13 @@ export function isSize(str: string): str is Size {
 }
 
 interface Wallpaper {
-  weight: number;
+  id: number;
   pictureUrl: string;
   // version: Version;
   // characters: string[]; // TODO: Configure characters as constant type
   // size: Size;
 }
 
-export const wallpapers: Wallpaper[] = data.map((d) => {
-  return { weight: d.weight, pictureUrl: d.pictureUrl };
+export const wallpapers: Wallpaper[] = data.map(({id, pictureUrl}) => {
+  return { id, pictureUrl };
 });
