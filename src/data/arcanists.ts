@@ -56,6 +56,15 @@ export async function getArcanist(kv: Deno.Kv, name: string) {
   return (await kv.get(["arcanists", name])).value as Arcanist;
 }
 
+export async function getAllArcanists(kv: Deno.Kv) {
+  const iter = kv.list<Arcanist>({ prefix: ["arcanists"] });
+  const arcanists = [];
+  for await (const { value } of iter) {
+    arcanists.push(value);
+  }
+  return arcanists;
+}
+
 export async function getArcanistByVersion(kv: Deno.Kv, version: Version) {
   const iter = kv.list<Arcanist>({
     prefix: ["arcanists_by_version", version],
