@@ -1,4 +1,16 @@
+import { Hono } from "hono";
+import { kv } from "./index.ts";
 import type { Version } from "./versions.ts";
+
+const app = new Hono();
+
+app.get("/", async (c) => {
+  c.json(await getAllArcanists(kv));
+});
+app.get("/:name", async (c) => {
+  const name = c.req.param("name");
+  c.json(await getArcanist(kv, name));
+});
 
 export const afflatuses = [
   "none",
@@ -97,3 +109,5 @@ export async function getArcanistByAfflatus(kv: Deno.Kv, afflatus: Afflatus) {
   }
   return arcanists;
 }
+
+export default app;

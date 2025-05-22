@@ -1,9 +1,13 @@
 import { Hono } from "hono";
+import { kv } from "./index.ts";
 import { Version } from "./versions.ts";
 
 const app = new Hono();
 
-// app.get("/", (c) => c.json(getAll))
+app.get("/:id", async (c) => {
+  const id = parseInt(c.req.param("id"));
+  c.json(await getWallpaper(kv, id));
+});
 
 type Size = "desktop" | "mobile";
 
