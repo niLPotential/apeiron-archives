@@ -1,5 +1,9 @@
-// import data from "./data.json" with { type: "json" };
+import { Hono } from "hono";
 import { Version } from "./versions.ts";
+
+const app = new Hono();
+
+// app.get("/", (c) => c.json(getAll))
 
 type Size = "desktop" | "mobile";
 
@@ -42,3 +46,5 @@ export async function getWallpapersByVersion(kv: Deno.Kv, version: Version) {
   }
   return wallpapers;
 }
+
+export default app;
