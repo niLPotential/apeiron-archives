@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { hydrateRoot } from "react-dom/client";
 import { RouterProvider } from "react-router/dom";
-import routes from "./app/routes.tsx";
+import routes from "./app/routes.ts";
 import { createBrowserRouter } from "react-router";
 import "./app/index.css";
 
