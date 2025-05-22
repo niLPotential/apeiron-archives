@@ -1,44 +1,14 @@
 import { X } from "lucide-react";
 import { useState } from "react";
-import { useLoaderData } from "react-router";
 import { Button } from "./ui/button.tsx";
 import { Combobox, createListCollection } from "./ui/combobox.tsx";
 import { IconButton } from "./ui/icon-button.tsx";
 import { TagsInput } from "./ui/tags-input.tsx";
-// import { versionNames } from "../data/versions.ts";
-// import { getAllArcanists } from "../data/arcanists.ts";
-// import { kv } from "../data/db.ts";
+import type { ListCollection } from "@ark-ui/react";
 
-const initialCollection = createListCollection({
-  "items": [...versions, ...arcanists],
-  "itemToString": (item) => {
-    switch (item.type) {
-      case "version":
-        return `${item.version}: ${
-          (item as typeof versions[number]).versionName
-        }`;
-      case "arcanist":
-        return (item as typeof arcanists[number]).krName;
-      default:
-        return "unknown type";
-    }
-  },
-  "itemToValue": (item) => {
-    switch (item.type) {
-      case "version":
-        return item.version;
-      case "arcanist":
-        return (item as typeof arcanists[number]).name;
-      default:
-        return "unknown type";
-    }
-  },
-  "groupBy": (item) => item.type,
-  "groupSort": ["version", "arcanist"],
-});
-
-export function WallpaperSearch() {
-  const data = useLoaderData();
+export function WallpaperSearch(
+  { initialCollection }: { initialCollection: ListCollection },
+) {
   const [collection, setCollection] = useState(initialCollection);
 
   function handleInputChange({ inputValue }: Combobox.InputValueChangeDetails) {
