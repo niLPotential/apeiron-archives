@@ -7,12 +7,8 @@ import {
   type RefAttributes,
   useContext,
 } from "react";
-import { cx } from "../../../../../styled-system/css";
-import {
-  isCssProperty,
-  styled,
-  type StyledComponent,
-} from "../../../../../styled-system/jsx";
+import { cx } from "styled-system/css";
+import { isCssProperty, styled, type StyledComponent } from "styled-system/jsx";
 
 type Props = Record<string, unknown>;
 type Recipe = {

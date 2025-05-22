@@ -1,14 +1,8 @@
 "use client";
 import type { Assign } from "@ark-ui/react";
 import { Combobox } from "@ark-ui/react/combobox";
-import {
-  combobox,
-  type ComboboxVariantProps,
-} from "../../../../styled-system/recipes";
-import type {
-  ComponentProps,
-  HTMLStyledProps,
-} from "../../../../styled-system/types";
+import { combobox, type ComboboxVariantProps } from "styled-system/recipes";
+import type { ComponentProps, HTMLStyledProps } from "styled-system/types";
 import { createStyleContext } from "./utils/create-style-context";
 
 const { withProvider, withContext } = createStyleContext(combobox);

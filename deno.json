@@ -5,8 +5,8 @@
     "prepare": "panda codegen",
     "park-ui": "park-ui",
     "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "build:client": "vite build",
+    "preview": "deno run -A --watch server.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
@@ -17,6 +17,11 @@
       "dom"
     ]
   },
+  "lint": {
+    "rules": {
+      "exclude": ["no-sloppy-imports"]
+    }
+  },
   "exclude": [
     "./node_modules",
     "./dist",
@@ -26,6 +31,7 @@
   "unstable": ["sloppy-imports", "kv"],
   "imports": {
     "@ark-ui/react": "npm:@ark-ui/react@^5.9.1",
+    "hono": "jsr:@hono/hono@^4.7.10",
     "@pandacss/dev": "npm:@pandacss/dev@^0.53.6",
     "@pandacss/preset-base": "npm:@pandacss/preset-base@^0.53.6",
     "@park-ui/cli": "npm:@park-ui/cli@^0.9.0",
@@ -38,7 +44,6 @@
     "react": "npm:react@^19.1.0",
     "react-dom": "npm:react-dom@^19.1.0",
     "react-router": "npm:react-router@^7.6.0",
-    "vite": "npm:vite@^6.3.5",
-    "vite-tsconfig-paths": "npm:vite-tsconfig-paths@^5.1.4"
+    "vite": "npm:vite@^6.3.5"
   }
 }

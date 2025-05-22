@@ -1,19 +1,13 @@
 import { X } from "lucide-react";
 import { useState } from "react";
+import { useLoaderData } from "react-router";
 import { Button } from "./ui/button.tsx";
 import { Combobox, createListCollection } from "./ui/combobox.tsx";
 import { IconButton } from "./ui/icon-button.tsx";
 import { TagsInput } from "./ui/tags-input.tsx";
-import { versionNames } from "../data/versions.ts";
-import { getAllArcanists } from "../data/arcanists.ts";
-import { kv } from "../data/db.ts";
-
-const versions = Object.entries(versionNames).map(([version, versionName]) => {
-  return { version, versionName, type: version };
-});
-const arcanists = (await getAllArcanists(kv)).map((arcanist) =>
-  Object.assign(arcanist, { type: "arcanist" })
-);
+// import { versionNames } from "../data/versions.ts";
+// import { getAllArcanists } from "../data/arcanists.ts";
+// import { kv } from "../data/db.ts";
 
 const initialCollection = createListCollection({
   "items": [...versions, ...arcanists],
@@ -44,6 +38,7 @@ const initialCollection = createListCollection({
 });
 
 export function WallpaperSearch() {
+  const data = useLoaderData();
   const [collection, setCollection] = useState(initialCollection);
 
   function handleInputChange({ inputValue }: Combobox.InputValueChangeDetails) {
