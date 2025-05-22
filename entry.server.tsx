@@ -4,7 +4,7 @@ import {
   createStaticRouter,
   StaticRouterProvider,
 } from "react-router";
-import routes from "./app/routes.tsx";
+import routes from "./app/routes.ts";
 import { StrictMode } from "react";
 
 const { query, dataRoutes, queryRoute } = createStaticHandler(routes);

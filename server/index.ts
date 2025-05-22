@@ -1,8 +1,8 @@
 import { Hono } from "hono";
 import { serveStatic } from "hono/deno";
 import { handler } from "../entry.server.tsx";
-import { kv } from "./db/index.ts";
-import { getWallpaper } from "./db/wallpapers.ts";
+import arcanists from "./db/arcanists.ts";
+import wallpapers from "./db/wallpapers.ts";
 
 const app = new Hono();
 
@@ -12,13 +12,8 @@ app.use(
     root: "./dist",
   }),
 );
-app.post(
-  "/api/wallpapers/:id",
-  async (c) => {
-    const id = parseInt(c.req.param("id"));
-    return c.json(await getWallpaper(kv, id));
-  },
-);
+app.route("/api/arcanists", arcanists);
+app.route("/api/wallpapers", wallpapers);
 app.use("/*", (c) => handler(c.req.raw));
 
 Deno.serve(app.fetch);

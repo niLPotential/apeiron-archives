@@ -4,11 +4,11 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   build: {
     rollupOptions: {
-      input: "./entry.client.tsx",
+      input: "./app/index.tsx",
       output: {
-        entryFileNames: "js/entry.client.js",
+        entryFileNames: "js/index.js",
       },
     },
   },
-  plugins: [, react()],
+  plugins: [react()],
 });

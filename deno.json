@@ -6,7 +6,7 @@
     "park-ui": "park-ui",
     "dev": "vite",
     "build:client": "vite build",
-    "preview": "deno run -A --watch server.ts"
+    "preview": "deno run -A --watch server/index.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
