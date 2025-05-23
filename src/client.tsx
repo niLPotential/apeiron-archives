@@ -1,7 +1,7 @@
 import { hc } from "hono/client";
-import { StrictMode } from "react";
+import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { useState } from "react";
+
 import type { ApiType } from "./index.tsx";
 
 const client = hc<ApiType>("/");
@@ -31,6 +31,10 @@ function Counter() {
 
 const ClockButton = () => {
   const [response, setResponse] = useState<string | null>(null);
+
+  useEffect(() => {
+    handleClick();
+  }, []);
 
   const handleClick = async () => {
     const response = await client.api.clock.$get();
