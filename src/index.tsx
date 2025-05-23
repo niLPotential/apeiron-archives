@@ -18,6 +18,7 @@ export type ApiType = typeof apiRoute;
 
 app.get("/", (c) => {
   return c.html(
+    `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
@@ -26,17 +27,23 @@ app.get("/", (c) => {
           rel="stylesheet"
           href="https://cdn.simplecss.org/simple.min.css"
         />
-        {
-          // @ts-ignore TODO: merge interface
-          import.meta.env.PROD
-            ? <script type="module" src="/static/client.js" />
-            : <script type="module" src="/src/client.tsx" />
-        }
+        <script type="module">
+          import RefreshRuntime from '/@react-refresh'
+          RefreshRuntime.injectIntoGlobalHook(window)
+          window.$RefreshReg$ = () => {}
+          window.$RefreshSig$ = () => (type) => type
+          window.__vite_plugin_react_preamble_installed__ = true
+        </script>
+        ${
+      // @ts-ignore TODO: merge interface
+      import.meta.env.PROD
+        ? `<script type="module" src="/static/client.js"></script>`
+        : `<script type="module" src="/src/client.tsx"></script>`}
       </head>
       <body>
-        <div id="root" />
+        <div id="root"></div>
       </body>
-    </html>,
+    </html>`,
   );
 });
 

@@ -7,7 +7,7 @@
   "nodeModulesDir": "auto",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx",
+    "jsxImportSource": "react",
     "lib": [
       "deno.ns",
       "deno.unstable",
@@ -18,7 +18,12 @@
   "imports": {
     "@hono/vite-build": "npm:@hono/vite-build@^1.6.2",
     "@hono/vite-dev-server": "npm:@hono/vite-dev-server@^0.19.1",
+    "@types/react": "npm:@types/react@^19.1.5",
+    "@types/react-dom": "npm:@types/react-dom@^19.1.5",
+    "@vitejs/plugin-react": "npm:@vitejs/plugin-react@^4.5.0",
     "hono": "npm:hono@^4.7.10",
+    "react": "npm:react@^19.1.0",
+    "react-dom": "npm:react-dom@^19.1.0",
     "vite": "npm:vite@^6.3.5"
   }
 }

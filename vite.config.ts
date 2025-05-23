@@ -1,13 +1,14 @@
 import { defineConfig } from "vite";
 import devServer from "@hono/vite-dev-server";
 import build from "@hono/vite-build/deno";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig(({ mode }) => {
   if (mode === "client") {
     return {
       esbuild: {
         jsx: "automatic",
-        jsxImportSource: "hono/jsx/dom", // Optimized for hono/jsx/dom
+        jsxImportSource: "react",
       },
       build: {
         rollupOptions: {
@@ -23,7 +24,7 @@ export default defineConfig(({ mode }) => {
   return {
     esbuild: {
       jsx: "automatic",
-      jsxImportSource: "hono/jsx",
+      jsxImportSource: "react",
     },
     plugins: [
       build({
@@ -32,6 +33,7 @@ export default defineConfig(({ mode }) => {
       devServer({
         entry: "src/index.tsx",
       }),
+      react(),
     ],
   };
 });

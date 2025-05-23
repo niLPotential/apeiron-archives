@@ -1,6 +1,7 @@
 import { hc } from "hono/client";
-import { useState } from "hono/jsx";
-import { render } from "hono/jsx/dom";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { useState } from "react";
 import type { ApiType } from "./index.tsx";
 
 const client = hc<ApiType>("/");
@@ -59,5 +60,8 @@ const ClockButton = () => {
   );
 };
 
-const root = document.getElementById("root")!;
-render(<App />, root);
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
