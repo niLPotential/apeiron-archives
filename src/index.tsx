@@ -1,15 +1,20 @@
 import { Hono } from "hono";
 import { serveStatic } from "hono/deno";
 
+import { getWallpaper } from "./db/wallpapers.ts";
+
 const app = new Hono();
 
-const routes = app.get("/api/clock", (c) => {
+const apiRoute = app.get("/api/clock", (c) => {
   return c.json({
     time: new Date().toLocaleTimeString(),
   });
+}).get("/api/wallpapers/:id", async (c) => {
+  const id = parseInt(c.req.param("id"));
+  return c.json(await getWallpaper(id));
 });
 
-export type AppType = typeof routes;
+export type ApiType = typeof apiRoute;
 
 app.get("/", (c) => {
   return c.html(

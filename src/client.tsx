@@ -1,9 +1,9 @@
 import { hc } from "hono/client";
 import { useState } from "hono/jsx";
 import { render } from "hono/jsx/dom";
-import type { AppType } from "./index.tsx";
+import type { ApiType } from "./index.tsx";
 
-const client = hc<AppType>("/");
+const client = hc<ApiType>("/");
 
 function App() {
   return (
@@ -13,6 +13,8 @@ function App() {
       <Counter />
       <h2>Example of API fetch()</h2>
       <ClockButton />
+      <h2>Connecting to Deno KV</h2>
+      <a href="/api/wallpapers/6">Link to api</a>
     </>
   );
 }
