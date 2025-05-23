@@ -1,5 +1,5 @@
-import { hc } from "hono/client";
-import { useEffect, useState } from "react";
+import { hc } from "@hono/hono/client";
+import { useEffect, useState } from "@hono/hono/jsx";
 
 import type { ApiType } from "./index.tsx";
 
