@@ -2,7 +2,7 @@ import { hc } from "hono/client";
 import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 
-import type { ApiType } from "./index.tsx";
+import type { ApiType } from "./index.ts";
 
 const client = hc<ApiType>("/");
 
