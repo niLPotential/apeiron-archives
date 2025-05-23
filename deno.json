@@ -18,6 +18,7 @@
   "imports": {
     "@hono/vite-build": "npm:@hono/vite-build@^1.6.2",
     "@hono/vite-dev-server": "npm:@hono/vite-dev-server@^0.19.1",
+    "@std/assert": "jsr:@std/assert@^1.0.13",
     "@types/react": "npm:@types/react@^19.1.5",
     "@types/react-dom": "npm:@types/react-dom@^19.1.5",
     "@vitejs/plugin-react": "npm:@vitejs/plugin-react@^4.5.0",

@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { serveStatic } from "hono/deno";
 
+import { kv } from "./db/index.ts";
 import { getWallpaper } from "./db/wallpapers.ts";
 
 const app = new Hono();
@@ -11,7 +12,7 @@ const apiRoute = app.get("/api/clock", (c) => {
   });
 }).get("/api/wallpapers/:id", async (c) => {
   const id = parseInt(c.req.param("id"));
-  return c.json(await getWallpaper(id));
+  return c.json(await getWallpaper(kv, id));
 });
 
 export type ApiType = typeof apiRoute;
