@@ -10,9 +10,11 @@
     "jsxImportSource": "hono/jsx",
     "lib": [
       "deno.ns",
+      "deno.unstable",
       "dom"
     ]
   },
+  "unstable": ["kv"],
   "imports": {
     "@hono/vite-build": "npm:@hono/vite-build@^1.6.2",
     "@hono/vite-dev-server": "npm:@hono/vite-dev-server@^0.19.1",
