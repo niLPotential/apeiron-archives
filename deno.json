@@ -24,6 +24,7 @@
     "hono": "npm:hono@^4.7.10",
     "react": "npm:react@^19.1.0",
     "react-dom": "npm:react-dom@^19.1.0",
+    "react-router": "npm:react-router@^7.6.0",
     "vite": "npm:vite@^6.3.5"
   }
 }
