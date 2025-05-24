@@ -17,6 +17,12 @@ export const versions = [
   "1.7",
   "1.8",
   "1.9",
+  "2.0",
+  "2.1",
+  "2.2",
+  "2.3",
+  "2.4",
+  "2.5",
 ] as const;
 export type Version = typeof versions[number];
 
@@ -31,5 +37,11 @@ export const versionNames: Record<Version, string> = {
   "1.7": "별은 빛나건만",
   "1.8": "안녕, 라야시키",
   "1.9": "고독의 노래",
+  "2.0": "질주! 골든 시티로",
+  "2.1": "루트 77: 유령의 도로",
+  "2.2": "슬픈 열대",
+  "2.3": "울루루 연대기: 런던의 여명",
+  "2.4": "지구에서의 마지막 밤",
+  "2.5": "차이나타운 무비",
 } as const;
 export type VersionName = (typeof versionNames)[Version];
