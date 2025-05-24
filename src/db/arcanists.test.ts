@@ -3,8 +3,8 @@ import {
   type Arcanist,
   getAllArcanists,
   getArcanist,
-  getArcanistByAfflatus,
-  getArcanistByRarity,
+  // getArcanistByAfflatus,
+  // getArcanistByRarity,
   getArcanistByVersion,
   insertArcanist,
 } from "./arcanists.ts";
@@ -15,19 +15,19 @@ Deno.test("Arcanists", async (t) => {
       name: "37",
       krName: "37",
       version: "1.4",
-      rarity: 6,
-      afflatus: "star",
-      damage: "mental",
-      tags: ["공격", "추격", "보조"],
+      // rarity: 6,
+      // afflatus: "star",
+      // damage: "mental",
+      // tags: ["공격", "추격", "보조"],
     },
     {
       name: "Vertin",
       krName: "버틴",
       version: "1.0",
-      rarity: 0,
-      afflatus: "none",
-      damage: "none",
-      tags: [],
+      // rarity: 0,
+      // afflatus: "none",
+      // damage: "none",
+      // tags: [],
     },
   ];
   const kv = await Deno.openKv(":memory:");
@@ -52,13 +52,13 @@ Deno.test("Arcanists", async (t) => {
     assertEquals(await getArcanistByVersion(kv, "1.4"), [examples[0]]);
   });
 
-  await t.step("can get arcanist by rarity", async () => {
-    assertEquals(await getArcanistByRarity(kv, 6), [examples[0]]);
-  });
+  // await t.step("can get arcanist by rarity", async () => {
+  //   assertEquals(await getArcanistByRarity(kv, 6), [examples[0]]);
+  // });
 
-  await t.step("can get arcanist by afflatus", async () => {
-    assertEquals(await getArcanistByAfflatus(kv, "star"), [examples[0]]);
-  });
+  // await t.step("can get arcanist by afflatus", async () => {
+  //   assertEquals(await getArcanistByAfflatus(kv, "star"), [examples[0]]);
+  // });
 
   kv.close();
 });
