@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "dev": "deno serve index.ts"
+    "dev": "deno serve --watch server.tsx"
   },
   "compilerOptions": {
     "jsx": "precompile",

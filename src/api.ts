@@ -5,11 +5,7 @@ import { getWallpaper } from "./db/wallpapers.ts";
 
 const app = new Hono();
 
-const apiRoute = app.get("/api/clock", (c) => {
-  return c.json({
-    time: new Date().toLocaleTimeString(),
-  });
-}).get("/api/wallpapers/:id", async (c) => {
+const apiRoute = app.get("/wallpapers/:id", async (c) => {
   const id = parseInt(c.req.param("id"));
   return c.json(await getWallpaper(kv, id));
 });
