@@ -4,6 +4,7 @@ export interface Wallpaper {
   id: number;
   pictureUrl: string;
   version: string;
+  mobile: boolean;
 }
 
 export const sampleWallpaper = {

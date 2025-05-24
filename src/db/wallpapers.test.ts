@@ -12,11 +12,13 @@ Deno.test("Wallpapers", async (t) => {
     "pictureUrl":
       "https://gamecms-res.sl916.com/official_website_resource/50001/4/PICTURE/20230325/Rock'n'roll!-1125x2436_69c37999272740aeb905e5d98d3efd68.jpg",
     version: "1.0",
+    mobile: false,
   }, {
     id: 543,
     "pictureUrl":
       "https://gamecms-res.sl916.com/official_website_resource/50001/4/PICTURE/20250507/20_c964b8347e684fe9bf7cc3e364a23185.jpg",
     version: "1.9", // TODO: Add 2.x versions
+    mobile: false,
   }];
   const kv = await Deno.openKv(":memory:");
 
