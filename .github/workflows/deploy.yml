@@ -30,7 +30,7 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "apeiron-archives"
-          entrypoint: "deno serve server.ts"
+          entrypoint: "server.ts"
           root: ""
           
           
