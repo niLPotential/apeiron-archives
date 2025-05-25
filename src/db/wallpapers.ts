@@ -3,9 +3,9 @@ import type { Version } from "./versions.ts";
 export interface Wallpaper {
   id: number;
   pictureUrl: string;
-  version: string;
+  version: Version;
   mobile: boolean;
-  charcters: string[];
+  characters: string[];
 }
 
 export const sampleWallpaper = {
@@ -32,7 +32,7 @@ export async function insertWallpaper(kv: Deno.Kv, wallpaper: Wallpaper) {
     .set(byVersionKey, wallpaper)
     .set(byMobile, wallpaper);
 
-  for (const character of wallpaper.charcters) {
+  for (const character of wallpaper.characters) {
     atomic.set(["wallpapers_by_character", character, wallpaper.id], wallpaper);
   }
   await atomic.commit();

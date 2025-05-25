@@ -15,21 +15,21 @@ Deno.test("Wallpapers", async (t) => {
       "https://gamecms-res.sl916.com/official_website_resource/50001/4/PICTURE/20230325/Rock'n'roll!-1125x2436_69c37999272740aeb905e5d98d3efd68.jpg",
     version: "1.0",
     mobile: true,
-    charcters: ["regulus", "apple"],
+    characters: ["regulus", "apple"],
   }, {
     "id": 7,
     "pictureUrl":
       "https://gamecms-res.sl916.com/official_website_resource/50001/4/PICTURE/20230328/2 Rock'n'roll!-2560x1440_87c42147d39a482896123a52630936bd.jpg",
     version: "1.0",
     mobile: false,
-    charcters: ["regulus", "apple"],
+    characters: ["regulus", "apple"],
   }, {
     id: 543,
     "pictureUrl":
       "https://gamecms-res.sl916.com/official_website_resource/50001/4/PICTURE/20250507/20_c964b8347e684fe9bf7cc3e364a23185.jpg",
     version: "1.9", // TODO: Add 2.x versions
     mobile: false,
-    charcters: [],
+    characters: [],
   }];
   const kv = await Deno.openKv(":memory:");
 
