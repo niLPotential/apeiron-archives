@@ -22,9 +22,15 @@ export async function insertWallpaper(kv: Deno.Kv, wallpaper: Wallpaper) {
     wallpaper.version,
     wallpaper.id,
   ];
+  const byMobile = [
+    "wallpapers_by_mobile",
+    wallpaper.mobile,
+    wallpaper.id,
+  ];
   const atomic = kv.atomic().check({ key: primaryKey, versionstamp: null })
     .set(primaryKey, wallpaper)
-    .set(byVersionKey, wallpaper);
+    .set(byVersionKey, wallpaper)
+    .set(byMobile, wallpaper);
 
   for (const character of wallpaper.charcters) {
     atomic.set(["wallpapers_by_character", character, wallpaper.id], wallpaper);
@@ -39,6 +45,17 @@ export async function getWallpaper(kv: Deno.Kv, id: number) {
 export async function getWallpapersByVersion(kv: Deno.Kv, version: Version) {
   const iter = kv.list<Wallpaper>({
     prefix: ["wallpapers_by_version", version],
+  });
+  const wallpapers = [];
+  for await (const { value } of iter) {
+    wallpapers.push(value);
+  }
+  return wallpapers;
+}
+
+export async function getWallpapersByMobile(kv: Deno.Kv, mobile: boolean) {
+  const iter = kv.list<Wallpaper>({
+    prefix: ["wallpapers_by_mobile", mobile],
   });
   const wallpapers = [];
   for await (const { value } of iter) {
