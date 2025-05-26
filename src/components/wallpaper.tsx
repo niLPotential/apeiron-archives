@@ -4,12 +4,16 @@ export default function Wallpaper({ wp }: { wp: Wallpaper }) {
   return (
     <>
       <div>
-        <img src={wp.pictureUrl} alt="" />
+        <img
+          src=""
+          alt={`Wallpaper id: ${wp.id}`}
+          loading="lazy"
+        />
       </div>
       <div>
-        <div id="version">{wp.version}</div>
-        <div id="src">{wp.pictureUrl}</div>
-        <div id="characters">{wp.characters}</div>
+        <div>{wp.version}</div>
+        <div>{wp.pictureUrl}</div>
+        <div>{wp.characters}</div>
       </div>
     </>
   );
