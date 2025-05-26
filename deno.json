@@ -1,7 +1,7 @@
 {
   "tasks": {
     "push": "deno run --allow-env --allow-read --allow-net ./scripts/db.ts",
-    "dev": "deno serve --watch server.ts"
+    "dev": "deno serve --watch server.tsx"
   },
   "compilerOptions": {
     "jsx": "precompile",
