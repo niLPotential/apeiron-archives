@@ -18,7 +18,7 @@ app.get("/", async (c) => {
       kv,
       version as Version,
     )
-    : null;
+    : [];
 
   const name = c.req.query("name");
   const wallpapersByCharcter = name
@@ -26,11 +26,11 @@ app.get("/", async (c) => {
       kv,
       name,
     )
-    : null;
+    : [];
 
-  console.log(version, name);
+  console.log(wallpapersByCharcter.length, wallpapersByVersion.length);
 
-  if (!wallpapersByVersion && !wallpapersByCharcter) {
+  if (wallpapersByVersion.length === 0 && wallpapersByCharcter.length === 0) {
     return c.notFound();
   }
 
@@ -43,14 +43,15 @@ app.get("/", async (c) => {
     ? setByCharacter
     : setByVersion.intersection(setByCharacter);
 
-  const mobile = c.req.query("mobile");
-  if (mobile !== "true" && mobile !== "false") return c.json(set);
-  set.forEach((wallpaper) => {
-    if (wallpaper.mobile.toString() !== mobile) {
-      set.delete(wallpaper);
-    }
-  });
   return c.json(set);
+  // const mobile = c.req.query("mobile");
+  // if (mobile !== "true" && mobile !== "false") return c.json(set);
+  // set.forEach((wallpaper) => {
+  //   if (wallpaper.mobile.toString() !== mobile) {
+  //     set.delete(wallpaper);
+  //   }
+  // });
+  // return c.json(set);
 });
 
 export default app;
