@@ -1,15 +1,15 @@
 import { Hono } from "@hono/hono";
 
 import { kv } from "./db/index.ts";
-import { type Version } from "./db/versions.ts";
+import type { Version } from "./db/versions.ts";
 import {
   getWallpapersByCharcter,
   getWallpapersByVersion,
 } from "./db/wallpapers.ts";
 
-const app = new Hono();
+import Wallpapers from "./components/wallpapers.tsx";
 
-app.post();
+const app = new Hono();
 
 app.get("/", async (c) => {
   const version = c.req.query("version");
@@ -31,24 +31,19 @@ app.get("/", async (c) => {
   if (wallpapersByVersion.length === 0 && wallpapersByCharcter.length === 0) {
     return c.notFound();
   }
-
-  const setByVersion = new Set(wallpapersByVersion);
-  const setByCharacter = new Set(wallpapersByCharcter);
-
-  const set = setByCharacter.size === 0
-    ? setByVersion
-    : setByVersion.size === 0
-    ? setByCharacter
-    : setByVersion.intersection(setByCharacter);
+  const filteredList = wallpapersByCharcter.length === 0
+    ? wallpapersByVersion
+    : wallpapersByVersion.length === 0
+    ? wallpapersByCharcter
+    : wallpapersByCharcter.filter((wallpaper) =>
+      wallpapersByVersion.includes(wallpaper)
+    );
 
   const mobile = c.req.query("mobile");
-  if (mobile !== "true" && mobile !== "false") return c.json(Array.from(set));
-  set.forEach((wallpaper) => {
-    if (wallpaper.mobile.toString() !== mobile) {
-      set.delete(wallpaper);
-    }
-  });
-  return c.json(Array.from(set));
+  if (mobile && (mobile === "true" || mobile === "false")) {
+    filteredList.filter((wallpaper) => wallpaper.mobile.toString() === mobile);
+  }
+  return c.render(<Wallpapers list={filteredList} />);
 });
 
 export default app;
