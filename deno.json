@@ -15,6 +15,7 @@
   "unstable": ["kv"],
   "imports": {
     "@hono/hono": "jsr:@hono/hono@^4.7.10",
-    "@std/assert": "jsr:@std/assert@^1.0.13"
+    "@std/assert": "jsr:@std/assert@^1.0.13",
+    "imagekit": "npm:imagekit@^6.0.0"
   }
 }
