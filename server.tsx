@@ -18,6 +18,7 @@ app.use(jsxRenderer(({ children }) => (
   </html>
 )));
 
+app.get("/", (c) => c.redirect("/wallpapers"));
 app.route("/wallpapers", wallpapers);
 
 export default app;
