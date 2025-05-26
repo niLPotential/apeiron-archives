@@ -1,4 +1,3 @@
-import { kv } from "../../db/index.ts";
 import { versionNames, versions } from "../../db/versions.ts";
 import type { Arcanist } from "../../db/arcanists.ts";
 
