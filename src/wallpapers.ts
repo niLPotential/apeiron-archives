@@ -12,17 +12,25 @@ const app = new Hono();
 app.post();
 
 app.get("/", async (c) => {
-  const wallpapersByVersion = await getWallpapersByVersion(
-    kv,
-    c.req.query("version") as Version,
-  );
+  const version = c.req.query("version");
+  const wallpapersByVersion = version
+    ? await getWallpapersByVersion(
+      kv,
+      version as Version,
+    )
+    : null;
 
-  const wallpapersByCharcter = await getWallpapersByCharcter(
-    kv,
-    c.req.query("name") as string,
-  );
+  const name = c.req.query("name");
+  const wallpapersByCharcter = name
+    ? await getWallpapersByCharcter(
+      kv,
+      name,
+    )
+    : null;
 
-  if (wallpapersByVersion.length === 0 && wallpapersByCharcter.length === 0) {
+  console.log(version, name);
+
+  if (!wallpapersByVersion && !wallpapersByCharcter) {
     return c.notFound();
   }
 
@@ -38,7 +46,7 @@ app.get("/", async (c) => {
   const mobile = c.req.query("mobile");
   if (mobile !== "true" && mobile !== "false") return c.json(set);
   set.forEach((wallpaper) => {
-    if (wallpaper.mobile.toString() != mobile) {
+    if (wallpaper.mobile.toString() !== mobile) {
       set.delete(wallpaper);
     }
   });
