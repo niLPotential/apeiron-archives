@@ -8,7 +8,7 @@ export default function Home({ arcanists }: { arcanists: Arcanist[] }) {
       <ul>
         {versions.map((version) => (
           <li key={version}>
-            <a href={`/wallpaper/versions/${version}`}>
+            <a href={`/wallpapers/versions/${version}`}>
               {`${version}: ${versionNames[version]}`}
             </a>
           </li>
