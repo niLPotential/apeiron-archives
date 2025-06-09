@@ -20,6 +20,8 @@
     "@neon/serverless": "jsr:@neon/serverless@^1.0.1",
     "@std/assert": "jsr:@std/assert@^1.0.13",
     "@tailwindcss/cli": "npm:@tailwindcss/cli@^4.1.8",
+    "drizzle-kit": "npm:drizzle-kit@^0.31.1",
+    "drizzle-orm": "npm:drizzle-orm@^0.44.2",
     "imagekit": "npm:imagekit@^6.0.0",
     "tailwindcss": "npm:tailwindcss@^4.1.8"
   }
