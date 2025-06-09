@@ -1,27 +1,12 @@
-import { versionNames, versions } from "../../db/versions.ts";
-import type { Arcanist } from "../../db/arcanists.ts";
+import { Hono } from "@hono/hono";
 
-export default function Home({ arcanists }: { arcanists: Arcanist[] }) {
-  return (
-    <>
-      <ul>
-        {versions.map((version) => (
-          <li key={version}>
-            <a href={`/wallpapers/versions/${version}`}>
-              {`${version}: ${versionNames[version]}`}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <ul>
-        {arcanists.map((arcanist) => (
-          <li key={arcanist.name}>
-            <a href={`/wallpapers/characters/${arcanist.name}`}>
-              {arcanist.krName}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </>
-  );
-}
+import { sql } from "../../db.ts";
+
+const app = new Hono();
+
+app.get("/", async (c) => {
+  const list = await sql`SELECT * from versions`;
+  return c.json(JSON.stringify(list));
+});
+
+export default app;
