@@ -1,6 +1,6 @@
-import { drizzle } from "drizzle-orm/neon-http";
+import "jsr:@std/dotenv/load"; // dev only
+
 import { neon } from "@neon/serverless";
 
 const databaseUrl = Deno.env.get("DATABASE_URL")!;
-const sql = neon(databaseUrl);
-export const db = drizzle({ client: sql });
+export const sql = neon(databaseUrl);
