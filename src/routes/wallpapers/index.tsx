@@ -10,8 +10,8 @@ app.get("/", async (c) => {
 });
 
 app.get("/:id", async (c) => {
-  const id = c.req.query("id")!;
-  const data = await sql`SELECT * FROM versions where id=${id}`;
+  const id = c.req.param("id");
+  const data = await sql`SELECT * FROM versions WHERE id=${id}`;
   if (data.length === 0) {
     return c.redirect("/");
   }
