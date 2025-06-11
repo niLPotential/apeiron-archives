@@ -11,3 +11,10 @@ export const imagekit = new ImageKit({
   privateKey: "",
   urlEndpoint: "",
 });
+
+export interface WallpaperData {
+  id: number;
+  version: string;
+  arcanists: string[];
+  portrait: boolean;
+}
