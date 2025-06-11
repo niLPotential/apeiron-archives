@@ -1,7 +1,7 @@
 import { Hono } from "@hono/hono";
 import { jsxRenderer } from "@hono/hono/jsx-renderer";
 
-import wallpapers from "./src/routes/wallpapers/index.tsx";
+import wallpapers from "./src/routes/wallpapers.tsx";
 
 const app = new Hono();
 
