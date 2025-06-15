@@ -14,7 +14,21 @@ export const imagekit = new ImageKit({
 
 export interface WallpaperData {
   id: number;
+  source: string;
   version: string;
   arcanists: string[];
   portrait: boolean;
+}
+
+export interface VersionData {
+  id: string;
+  en: string;
+  kr: string;
+}
+
+export interface ArcanistData {
+  id: string;
+  en: string;
+  kr: string;
+  version: string;
 }

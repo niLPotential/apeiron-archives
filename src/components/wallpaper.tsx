@@ -4,7 +4,11 @@ import { imagekit, WallpaperData } from "../db.ts";
 
 export function WallpaperImage({ id }: WallpaperData) {
   const src = imagekit.url({ signed: true, path: `./raw/${id}.jpg` });
-  return <img src={src} alt={`wallpaper-${id}`} />;
+  return (
+    <a href={`/wallpapers/${id}`}>
+      <img src={src} alt={`wallpaper-${id}`} />
+    </a>
+  );
 }
 
 export function WallpapersList({ list }: { list: WallpaperData[] }) {
