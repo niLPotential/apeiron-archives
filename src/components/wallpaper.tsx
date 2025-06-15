@@ -3,7 +3,7 @@ import { css } from "@hono/hono/css";
 import { imagekit, WallpaperData } from "../db.ts";
 
 export function WallpaperImage({ id }: WallpaperData) {
-  const src = imagekit.url({ signed: true, path: `./${id}.jpg` });
+  const src = imagekit.url({ signed: true, path: `./raw/${id}.jpg` });
   return <img src={src} alt={`wallpaper-${id}`} />;
 }
 
