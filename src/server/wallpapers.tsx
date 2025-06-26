@@ -1,7 +1,7 @@
 import { Hono } from "@hono/hono";
 
-import { sql, WallpaperData } from "../db.ts";
-import { WallpapersList } from "../components/wallpaper.tsx";
+import { sql, WallpaperData } from "./db.ts";
+import { WallpapersList } from "../app/wallpaper.tsx";
 
 const app = new Hono();
 
