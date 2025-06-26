@@ -1,7 +1,9 @@
 {
   "nodeModulesDir": "auto",
   "tasks": {
-    "dev": "deno serve --allow-env --allow-net --allow-read --watch server.tsx"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "compilerOptions": {
     "jsx": "precompile",
