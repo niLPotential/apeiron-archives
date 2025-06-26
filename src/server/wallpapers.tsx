@@ -1,6 +1,7 @@
 import { Hono } from "@hono/hono";
+import { css } from "@hono/hono/css";
 
-import { sql, WallpaperData } from "./db.ts";
+import { ArcanistData, sql, VersionData, WallpaperData } from "./db.ts";
 import { WallpapersList } from "../app/wallpaper.tsx";
 
 const app = new Hono();
@@ -20,8 +21,31 @@ app.get("/", async (c) => {
   const data =
     await sql`SELECT * FROM pictures ${condition}` as WallpaperData[];
 
+  const versions = await sql`SELECT * FROM versions` as VersionData[];
+  const arcanists = await sql`SELECT * FROM arcanists` as ArcanistData[];
+
+  const formClass = css`
+    display: flex;
+    flex-direction: column;
+  `;
+
   return c.render(
-    <WallpapersList list={data} />,
+    <>
+      <form class={formClass}>
+        <select name="version">
+          {versions.map((v) => (
+            <option key={v.id} value={v.id}>{`${v.id}: ${v.kr}`}</option>
+          ))}
+        </select>
+        <select name="name">
+          {arcanists.map((a) => (
+            <option key={a.id} value={a.id}>{a.kr}</option>
+          ))}
+        </select>
+        <button type="submit">Submit</button>
+      </form>
+      <WallpapersList list={data} />,
+    </>,
   );
 });
 
