@@ -12,6 +12,7 @@
     ]
   },
   "imports": {
+    "@domcojs/deno": "npm:@domcojs/deno@^2.0.1",
     "@hono/hono": "jsr:@hono/hono@^4.7.10",
     "@neon/serverless": "jsr:@neon/serverless@^1.0.1",
     "domco": "npm:domco@^4.1.5",
