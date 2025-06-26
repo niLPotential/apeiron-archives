@@ -1,7 +1,8 @@
 import { Hono } from "@hono/hono";
 import { css } from "@hono/hono/css";
 
-import { ArcanistData, sql, VersionData, WallpaperData } from "./db.ts";
+import type { ArcanistData, VersionData, WallpaperData } from "./db.ts";
+import { sql } from "./db.ts";
 import { WallpapersList } from "../app/wallpaper.tsx";
 
 const app = new Hono();
