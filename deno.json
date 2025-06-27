@@ -5,14 +5,14 @@
   },
   "compilerOptions": {
     "jsx": "precompile",
-    "jsxImportSource": "@hono/hono/jsx",
+    "jsxImportSource": "hono/jsx",
     "lib": [
       "deno.ns",
       "dom"
     ]
   },
   "imports": {
-    "@hono/hono": "jsr:@hono/hono@^4.7.10",
+    "hono": "jsr:@hono/hono@^4.7.10",
     "@neon/serverless": "jsr:@neon/serverless@^1.0.1",
     "imagekit": "npm:imagekit@^6.0.0"
   }

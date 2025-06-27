@@ -1,4 +1,4 @@
-import { css } from "@hono/hono/css";
+import { css } from "hono/css";
 
 import { imagekit, WallpaperData } from "../db.ts";
 

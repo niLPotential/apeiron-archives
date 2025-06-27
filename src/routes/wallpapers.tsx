@@ -1,5 +1,5 @@
-import { Hono } from "@hono/hono";
-import { css } from "@hono/hono/css";
+import { Hono } from "hono";
+import { css } from "hono/css";
 
 import { ArcanistData, sql, VersionData, WallpaperData } from "../db.ts";
 import { WallpapersList } from "../components/wallpaper.tsx";

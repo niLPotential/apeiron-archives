@@ -1,6 +1,6 @@
-import { Hono } from "@hono/hono";
-import { Style } from "@hono/hono/css";
-import { jsxRenderer } from "@hono/hono/jsx-renderer";
+import { Hono } from "hono";
+import { Style } from "hono/css";
+import { jsxRenderer } from "hono/jsx-renderer";
 
 import wallpapers from "./src/routes/wallpapers.tsx";
 
