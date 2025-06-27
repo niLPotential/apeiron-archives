@@ -1,20 +1,22 @@
 {
   "version": "5",
   "specifiers": {
-    "jsr:@hono/hono@^4.7.10": "4.7.11",
+    "jsr:@hono/hono@^4.8.3": "4.8.3",
     "jsr:@neon/serverless@^1.0.1": "1.0.1",
     "jsr:@std/dotenv@*": "0.225.4",
     "npm:@domcojs/deno@^2.0.1": "2.0.1_vite@7.0.0__@types+node@22.15.30__picomatch@4.0.2_@types+node@22.15.30",
     "npm:@types/node@^22.15.30": "22.15.30",
     "npm:@types/pg@^8.8.0": "8.15.4",
     "npm:domco@^4.1.5": "4.1.5_vite@7.0.0__@types+node@22.15.30__picomatch@4.0.2_@types+node@22.15.30",
+    "npm:domco@^4.1.6": "4.1.6_vite@7.0.0__@types+node@22.15.30__picomatch@4.0.2_@types+node@22.15.30",
     "npm:events@^3.3.0": "3.3.0",
     "npm:imagekit@6": "6.0.0",
-    "npm:vite@7": "7.0.0_@types+node@22.15.30_picomatch@4.0.2"
+    "npm:vite@7": "7.0.0_@types+node@22.15.30_picomatch@4.0.2",
+    "npm:vite@7.0.0": "7.0.0_@types+node@22.15.30_picomatch@4.0.2"
   },
   "jsr": {
-    "@hono/hono@4.7.11": {
-      "integrity": "52b9395e4f2448fbaf82a6bd7925d15e59f4055037e74d6c2f657f3618b11193"
+    "@hono/hono@4.8.3": {
+      "integrity": "f17509836610b97e9ec86bce5349387115c35ee72b7b29fd2b7944abe5f843ab"
     },
     "@neon/serverless@1.0.1": {
       "integrity": "ae676133f8ea93ad64ee291635da360aed034105815560ffb6b484ab42ed0f6f",
@@ -32,7 +34,7 @@
     "@domcojs/deno@2.0.1_vite@7.0.0__@types+node@22.15.30__picomatch@4.0.2_@types+node@22.15.30": {
       "integrity": "sha512-yq6U9zeRgt/URbNb75DESOyy94WkslvRm5XA6d9+/iVOaXLfklsckzOgQ4S07jIHZBENy0fHfSXG/Ib62S+Zyg==",
       "dependencies": [
-        "domco"
+        "domco@4.1.5_vite@7.0.0__@types+node@22.15.30__picomatch@4.0.2_@types+node@22.15.30"
       ]
     },
     "@emnapi/core@1.4.3": {
@@ -716,6 +718,12 @@
         "vite"
       ]
     },
+    "domco@4.1.6_vite@7.0.0__@types+node@22.15.30__picomatch@4.0.2_@types+node@22.15.30": {
+      "integrity": "sha512-Udd5H16Vt0Fvr5j2SoJpXNrM32QfoFaiQvr7899TA/RKH88R8KunJiMgE05KkQcSjiQGXi9XvXNIjqUQKEoS0g==",
+      "dependencies": [
+        "vite"
+      ]
+    },
     "dunder-proto@1.0.1": {
       "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==",
       "dependencies": [
@@ -1056,10 +1064,10 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@hono/hono@^4.7.10",
+      "jsr:@hono/hono@^4.8.3",
       "jsr:@neon/serverless@^1.0.1",
       "npm:@domcojs/deno@^2.0.1",
-      "npm:domco@^4.1.5",
+      "npm:domco@^4.1.6",
       "npm:imagekit@6",
       "npm:vite@7"
     ]
