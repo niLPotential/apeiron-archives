@@ -15,7 +15,6 @@
   },
   "imports": {
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.5",
-    "@domcojs/deno": "npm:@domcojs/deno@^2.0.1",
     "@hono/hono": "jsr:@hono/hono@^4.8.3",
     "@neon/serverless": "jsr:@neon/serverless@^1.0.1",
     "domco": "npm:domco@^4.1.6",
