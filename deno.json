@@ -17,7 +17,7 @@
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.5",
     "@hono/hono": "jsr:@hono/hono@^4.8.3",
     "@neon/serverless": "jsr:@neon/serverless@^1.0.1",
-    "domco": "npm:domco@^4.1.6",
+    "domco": "npm:domco@^4.2.0",
     "imagekit": "npm:imagekit@^6.0.0",
     "unocss": "npm:unocss@^66.3.2",
     "vite": "npm:vite@^7.0.0"
