@@ -11,7 +11,7 @@ export default function Layout({ children }: PropsWithChildren) {
         {src.module.map((v) => <script key={v} type="module" src={v} />)}
         {src.preload.map((v) => <link key={v}rel="modulepreload" crossorigin="anonymous" href={v}/>)}
         {src.style.map((v) => <link key={v} rel="stylesheet" href={v} />)}
-        <title>Domco</title>
+        <title>Apeiron Archives</title>
       </head>
       <body hx-boost>
         {children}
