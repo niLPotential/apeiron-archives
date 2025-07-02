@@ -9,6 +9,7 @@
     "npm:@types/pg@^8.8.0": "8.15.4",
     "npm:domco@^4.2.0": "4.2.0_vite@7.0.0__@types+node@22.15.30__picomatch@4.0.2_@types+node@22.15.30",
     "npm:events@^3.3.0": "3.3.0",
+    "npm:htmx.org@^2.0.6": "2.0.6",
     "npm:imagekit@6": "6.0.0",
     "npm:unocss@^66.3.2": "66.3.2_vite@7.0.0__@types+node@22.15.30__picomatch@4.0.2_@types+node@22.15.30",
     "npm:vite@7": "7.0.0_@types+node@22.15.30_picomatch@4.0.2",
@@ -1306,6 +1307,9 @@
         "function-bind"
       ]
     },
+    "htmx.org@2.0.6": {
+      "integrity": "sha512-7ythjYneGSk3yCHgtCnQeaoF+D+o7U2LF37WU3O0JYv3gTZSicdEFiI/Ai/NJyC5ZpYJWMpUb11OC5Lr6AfAqA=="
+    },
     "imagekit@6.0.0": {
       "integrity": "sha512-0MsxThZM2PYH6ngwN3zi9PDa8pCB5mEZG2FSySYiZk3Hfri8IMwUqVNzRlLQewBHQ3YtTN9M59O0Xe9HRewtOA==",
       "dependencies": [
@@ -1704,6 +1708,7 @@
       "jsr:@neon/serverless@^1.0.1",
       "npm:@deno/vite-plugin@^1.0.5",
       "npm:domco@^4.2.0",
+      "npm:htmx.org@^2.0.6",
       "npm:imagekit@6",
       "npm:unocss@^66.3.2",
       "npm:vite@7"
