@@ -12,7 +12,7 @@ export default function Layout({ children }: PropsWithChildren) {
         {src.style.map((v) => <link key={v} rel="stylesheet" href={v} />)}
         <title>Domco</title>
       </head>
-      <body>
+      <body hx-boost>
         {children}
       </body>
     </html>
