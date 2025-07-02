@@ -13,7 +13,7 @@ app.use(jsxRenderer(({ children }) => (
   </Layout>
 )));
 
-app.use("/_immutable/*", serveStatic({root: "./dist/client/"}))
+app.use("/_immutable/*", serveStatic({ root: "./dist/client/" }));
 
 app.get("/", (c) => c.redirect("/wallpapers"));
 app.route("/wallpapers", wallpapers);
