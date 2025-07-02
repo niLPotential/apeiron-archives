@@ -1,7 +1,9 @@
 {
   "nodeModulesDir": "auto",
   "tasks": {
-    "dev": "deno serve --allow-env --allow-net --allow-read --watch server.tsx"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "compilerOptions": {
     "jsx": "precompile",
@@ -12,8 +14,12 @@
     ]
   },
   "imports": {
-    "@hono/hono": "jsr:@hono/hono@^4.7.10",
+    "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.5",
+    "@hono/hono": "jsr:@hono/hono@^4.8.3",
     "@neon/serverless": "jsr:@neon/serverless@^1.0.1",
-    "imagekit": "npm:imagekit@^6.0.0"
+    "domco": "npm:domco@^4.2.0",
+    "imagekit": "npm:imagekit@^6.0.0",
+    "unocss": "npm:unocss@^66.3.2",
+    "vite": "npm:vite@^7.0.0"
   }
 }
