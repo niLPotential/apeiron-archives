@@ -1,3 +1,8 @@
-import { defineConfig } from "unocss";
+import { defineConfig, presetMini } from "unocss";
 
-export default defineConfig({});
+export default defineConfig({
+  presets: [presetMini()],
+  content: {
+    filesystem: ["**/*.tsx"],
+  },
+});
