@@ -9,6 +9,7 @@ export default function Layout({ children }: PropsWithChildren) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {src.module.map((v) => <script key={v} type="module" src={v} />)}
+        {src.preload.map((v) => <link key={v}rel="modulepreload" crossorigin="anonymous" href={v}/>)}
         {src.style.map((v) => <link key={v} rel="stylesheet" href={v} />)}
         <title>Domco</title>
       </head>
