@@ -38,7 +38,7 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "apeiron-archives"
-          entrypoint: "index.js"
+          entrypoint: "server/app.js"
           root: "dist"
           
           
