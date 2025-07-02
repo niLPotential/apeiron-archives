@@ -1,5 +1,3 @@
-import { css } from "@hono/hono/css";
-
 import { imagekit, WallpaperData } from "../server/db.ts";
 
 export function WallpaperImage({ id }: WallpaperData) {
@@ -12,13 +10,8 @@ export function WallpaperImage({ id }: WallpaperData) {
 }
 
 export function WallpapersList({ list }: { list: WallpaperData[] }) {
-  const wallpaperListClass = css`
-    display: flex;
-    flex-direction: column;
-  `;
-
   return (
-    <ul class={wallpaperListClass}>
+    <ul class="flex flex-col">
       {list.map((wallpaper) => (
         <li key={wallpaper.id}>
           <WallpaperImage {...wallpaper} />
