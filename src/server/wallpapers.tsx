@@ -3,6 +3,7 @@ import { Hono } from "@hono/hono";
 import type { ArcanistData, VersionData, WallpaperData } from "./db.ts";
 import { sql } from "./db.ts";
 import { WallpapersList } from "../app/wallpaper.tsx";
+import CharacterButton from "../components/CharacterButton.tsx";
 
 const app = new Hono();
 
@@ -39,6 +40,13 @@ app.get("/", async (c) => {
         </select>
         <button type="submit">Submit</button>
       </form>
+      <ul>
+        {arcanists.map((a) => (
+          <li>
+            <CharacterButton id={a.id} name={a.kr} />
+          </li>
+        ))}
+      </ul>
       <WallpapersList list={data} />,
     </>,
   );
@@ -48,6 +56,15 @@ app.get("/:id", async (c) => {
   const id = c.req.param("id");
   const data =
     await sql`SELECT * FROM pictures WHERE id = ${id}` as WallpaperData[];
+  return c.render(
+    <WallpapersList list={data} />,
+  );
+});
+
+app.get("/characters/:id", async (c) => {
+  const id = c.req.param("id");
+  const data =
+    await sql`SELECT * FROM pictures WHERE ${id} = ANY (arcanists)` as WallpaperData[];
   return c.render(
     <WallpapersList list={data} />,
   );
