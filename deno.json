@@ -15,13 +15,13 @@
   },
   "imports": {
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.5",
-    "@hono/hono": "jsr:@hono/hono@^4.8.3",
+    "@hono/hono": "jsr:@hono/hono@^4.8.9",
     "@neon/serverless": "jsr:@neon/serverless@^1.0.1",
     "alpinejs": "npm:alpinejs@^3.14.9",
-    "domco": "npm:domco@^4.2.0",
+    "domco": "npm:domco@^4.3.0",
     "htmx.org": "npm:htmx.org@^2.0.6",
     "imagekit": "npm:imagekit@^6.0.0",
-    "unocss": "npm:unocss@^66.3.2",
-    "vite": "npm:vite@^7.0.0"
+    "unocss": "npm:unocss@^66.3.3",
+    "vite": "npm:vite@^7.0.6"
   }
 }
