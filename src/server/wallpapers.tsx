@@ -1,65 +1,41 @@
 import { Hono } from "@hono/hono";
+import { jsxRenderer } from "@hono/hono/jsx-renderer";
 
-import type { ArcanistData, VersionData, WallpaperData } from "./db.ts";
+import type { ArcanistData, WallpaperData } from "./db.ts";
 import { sql } from "./db.ts";
 import { WallpapersList } from "../app/wallpaper.tsx";
-import CharacterButton from "../components/CharacterButton.tsx";
+import CharacterList from "../components/CharacterList.tsx";
 
 const app = new Hono();
 
-app.get("/", async (c) => {
-  const version = c.req.query("version");
-  const name = c.req.query("name");
-
-  const condition = version && name
-    ? sql`WHERE ${version} = version AND ${name} = ANY (arcanists)`
-    : version
-    ? sql`WHERE ${version} = version`
-    : name
-    ? sql`WHERE ${name} = ANY (arcanists)`
-    : sql`ORDER BY RANDOM() LIMIT 3`;
-
-  const data =
-    await sql`SELECT * FROM pictures ${condition}` as WallpaperData[];
-
-  const versions = await sql`SELECT * FROM versions` as VersionData[];
+app.use(jsxRenderer(async ({ children }) => {
   const arcanists = await sql`SELECT * FROM arcanists` as ArcanistData[];
 
-  return c.render(
+  return (
     <>
-      <form class="flex flex-col">
-        <select name="version">
-          {versions.map((v) => (
-            <option key={v.id} value={v.id}>{`${v.id}: ${v.kr}`}</option>
-          ))}
-        </select>
-        <select name="name">
-          {arcanists.map((a) => (
-            <option key={a.id} value={a.id}>{a.kr}</option>
-          ))}
-        </select>
-        <button type="submit">Submit</button>
-      </form>
-      <ul>
-        {arcanists.map((a) => (
-          <li>
-            <CharacterButton id={a.id} name={a.kr} />
-          </li>
-        ))}
-      </ul>
-      <WallpapersList list={data} />,
-    </>,
+      <CharacterList list={arcanists} />
+      {children}
+    </>
   );
-});
+}));
 
-app.get("/:id", async (c) => {
-  const id = c.req.param("id");
+app.get("/", async (c) => {
   const data =
-    await sql`SELECT * FROM pictures WHERE id = ${id}` as WallpaperData[];
+    await sql`SELECT * FROM pictures ORDER BY RANDOM() LIMIT 3` as WallpaperData[];
+
   return c.render(
     <WallpapersList list={data} />,
   );
 });
+
+// app.get("/:id", async (c) => {
+//   const id = c.req.param("id");
+//   const data =
+//     await sql`SELECT * FROM pictures WHERE id = ${id}` as WallpaperData[];
+//   return c.render(
+//     <WallpapersList list={data} />,
+//   );
+// });
 
 app.get("/characters/:id", async (c) => {
   const id = c.req.param("id");
