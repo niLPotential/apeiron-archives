@@ -8,14 +8,14 @@ import CharacterList from "../components/CharacterList.tsx";
 
 const app = new Hono();
 
-app.use(jsxRenderer(async ({ children }) => {
+app.use(jsxRenderer(async ({ children, Layout }) => {
   const arcanists = await sql`SELECT * FROM arcanists` as ArcanistData[];
 
   return (
-    <>
+    <Layout>
       <CharacterList list={arcanists} />
       {children}
-    </>
+    </Layout>
   );
 }));
 
