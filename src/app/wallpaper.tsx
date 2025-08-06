@@ -13,8 +13,11 @@ export function WallpapersList({ list }: { list: WallpaperData[] }) {
   return (
     <ul class="flex flex-col">
       {list.map((wallpaper) => (
-        <li key={wallpaper.id}>
-          <WallpaperImage {...wallpaper} />
+        <li
+          key={wallpaper.id}
+          hx-get={`/wallpapers/${wallpaper.id}`}
+          hx-trigger="revealed"
+        >
         </li>
       ))}
     </ul>
