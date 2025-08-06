@@ -3,8 +3,7 @@ import "jsr:@std/dotenv/load"; // dev only
 import { neon } from "@neon/serverless";
 import ImageKit from "imagekit";
 
-const databaseUrl = Deno.env.get("DATABASE_URL")!;
-export const sql = neon(databaseUrl);
+export const sql = neon();
 
 export const imagekit = new ImageKit({
   publicKey: Deno.env.get("IMAGEKIT_PUBLIC_KEY")!,
