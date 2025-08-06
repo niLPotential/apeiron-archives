@@ -13,10 +13,12 @@ app.use(jsxRenderer(async ({ children, Layout }) => {
 
   return (
     <Layout>
-      <nav class="fixed left-0 h-screen shrink-0 flex flex-col">
+      <nav class="relative left-0 h-screen shrink-0 flex flex-col w-80 gap-5">
         <CharacterList list={arcanists} />
       </nav>
-      {children}
+      <main class="w-full">
+        {children}
+      </main>
     </Layout>
   );
 }));
