@@ -9,7 +9,7 @@ export default function CharacterList({ list }: { list: ArcanistData[] }) {
         allOptions: ${JSON.stringify(list)},
         get options() {
           return this.allOptions.filter((option) => 
-            option.label.toLowerCase().includes(query.toLowerCase())
+            option.id.toLowerCase().includes(query.toLowerCase())
           )
         }
       }`}
