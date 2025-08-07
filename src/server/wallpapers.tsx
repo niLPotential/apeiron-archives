@@ -14,7 +14,7 @@ app.use(jsxRenderer(async ({ children, Layout }) => {
   return (
     <Layout>
       <div class="flex flex-row">
-        <nav class="relative left-0 h-screen shrink-0 flex flex-col w-80 gap-5">
+        <nav class="sticky left-0 h-screen shrink-0 flex flex-col w-80 gap-5">
           <CharacterList list={arcanists} />
         </nav>
         <main class="w-full">
