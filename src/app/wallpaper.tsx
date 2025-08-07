@@ -11,12 +11,38 @@ export function WallpaperImage({ id }: WallpaperData) {
 
 export function WallpapersList({ list }: { list: WallpaperData[] }) {
   return (
-    <ul class="flex flex-col">
-      {list.map((wallpaper) => (
-        <li key={wallpaper.id}>
-          <WallpaperImage {...wallpaper} />
-        </li>
-      ))}
-    </ul>
+    <div
+      x-data="{
+        opened: false,
+        active: null,
+        index: null,
+        open() {
+        }
+        close() {
+        }
+        next() {
+        }
+        prev() {
+        }
+      }"
+      x-on:keyup="next"
+    >
+      <div>
+        <ul class="flex flex-col">
+          {list.map((wallpaper) => (
+            <li key={wallpaper.id}>
+              <WallpaperImage {...wallpaper} />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <template x-teleport="body">
+        <div x-show="opened">
+          <div>
+            <img />
+          </div>
+        </div>
+      </template>
+    </div>
   );
 }
