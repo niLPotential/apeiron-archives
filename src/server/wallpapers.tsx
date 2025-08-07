@@ -3,7 +3,7 @@ import { jsxRenderer } from "@hono/hono/jsx-renderer";
 
 import type { ArcanistData, WallpaperData } from "./db.ts";
 import { sql } from "./db.ts";
-import { WallpaperImage, WallpapersList } from "../app/wallpaper.tsx";
+import { WallpapersList } from "../app/wallpaper.tsx";
 import CharacterList from "../components/CharacterList.tsx";
 
 const app = new Hono();
@@ -13,8 +13,8 @@ app.use(jsxRenderer(async ({ children, Layout }) => {
 
   return (
     <Layout>
-      <div class="flex flex-row">
-        <nav class="sticky left-0 h-screen shrink-0 flex flex-col w-80 gap-5">
+      <div class="relative flex flex-row">
+        <nav class="fixed left-0 h-screen shrink-0 flex flex-col w-80">
           <CharacterList list={arcanists} />
         </nav>
         <main class="w-full">
@@ -27,7 +27,7 @@ app.use(jsxRenderer(async ({ children, Layout }) => {
 
 app.get("/", async (c) => {
   const data =
-    await sql`SELECT * FROM pictures ORDER BY RANDOM()` as WallpaperData[];
+    await sql`SELECT * FROM pictures ORDER BY RANDOM() LIMIT 7` as WallpaperData[];
 
   return c.render(
     <WallpapersList list={data} />,

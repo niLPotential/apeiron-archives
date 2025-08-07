@@ -5,7 +5,7 @@ export default function CharacterButton(
 ) {
   // const src = imagekit.url({ signed: true, path: `./avatar/${id}.jpg` });
   return (
-    <a href={`/wallpapers/characters/${id}`} class="border rounded-full p-5">
+    <a href={`/wallpapers/characters/${id}`} class="border rounded-full p-2">
       {/* <img src={src} alt={id.at(0)} /> */}
       <span>{name}</span>
     </a>

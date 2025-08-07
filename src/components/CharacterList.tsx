@@ -17,12 +17,12 @@ export default function CharacterList({ list }: { list: ArcanistData[] }) {
       <div class="relative">
         <input type="search" x-model="query" />
       </div>
-      <ul class="flex flex-col overflow-auto">
+      <ul class="flex flex-col overflow-auto gap-5">
         <template x-for="item in options" x-bind:key="item.id">
           <li>
             <a
               x-bind:href="'/wallpapers/characters/' + item.id.toString()"
-              class="border rounded-full p-5"
+              class="border rounded-full p-2"
             >
               <span x-text="item.kr"></span>
             </a>
