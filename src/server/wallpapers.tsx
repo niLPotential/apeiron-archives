@@ -34,16 +34,6 @@ app.get("/", async (c) => {
   );
 });
 
-app.get("/:id", async (c) => {
-  const id = c.req.param("id");
-  const data =
-    await sql`SELECT * FROM pictures WHERE id = ${id}` as WallpaperData[];
-  if (data.length === 0) return c.notFound();
-  return c.html(
-    <WallpaperImage {...data[0]} />,
-  );
-});
-
 app.get("/characters/:id", async (c) => {
   const id = c.req.param("id");
   const data =

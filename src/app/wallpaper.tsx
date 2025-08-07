@@ -6,18 +6,15 @@ export function WallpaperImage({ id }: WallpaperData) {
     path: `./raw/${id}.jpg`,
     transformation: [{ height: 200 }],
   });
-  return <img src={src} alt={`wallpaper-${id}`} />;
+  return <img src={src} alt={`wallpaper-${id}`} loading="lazy" />;
 }
 
 export function WallpapersList({ list }: { list: WallpaperData[] }) {
   return (
     <ul class="flex flex-col">
       {list.map((wallpaper) => (
-        <li
-          key={wallpaper.id}
-          hx-get={`/wallpapers/${wallpaper.id}`}
-          hx-trigger="revealed"
-        >
+        <li key={wallpaper.id}>
+          <WallpaperImage {...wallpaper} />
         </li>
       ))}
     </ul>
