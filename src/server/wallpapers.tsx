@@ -2,7 +2,7 @@ import { Hono } from "@hono/hono";
 import { jsxRenderer } from "@hono/hono/jsx-renderer";
 
 import type { ArcanistData, WallpaperData } from "./db.ts";
-import { sql } from "./db.ts";
+import { imagekit, sql } from "./db.ts";
 import { WallpapersList } from "../app/wallpaper.tsx";
 import CharacterList from "../components/CharacterList.tsx";
 
@@ -40,6 +40,21 @@ app.get("/characters/:id", async (c) => {
     await sql`SELECT * FROM pictures WHERE ${id} = ANY (arcanists)` as WallpaperData[];
   return c.render(
     <WallpapersList list={data} />,
+  );
+});
+
+app.get("/images/:id", async (c) => {
+  const id = c.req.param("id");
+  const [data] =
+    await sql`SELECT * FROM pictures WHERE ${id} = id` as WallpaperData[];
+  const src = imagekit.url({
+    signed: true,
+    path: `./raw/${data.id}.jpg`,
+  });
+  return c.html(
+    <div x-data x-on:click="$el.remove()">
+      <img src={src} />
+    </div>,
   );
 });
 

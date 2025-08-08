@@ -1,6 +1,6 @@
 import { imagekit, WallpaperData } from "../server/db.ts";
 
-export function WallpaperImage({ id }: WallpaperData) {
+function WallpaperImage({ id }: WallpaperData) {
   const src = imagekit.url({
     signed: true,
     path: `./raw/${id}.jpg`,
@@ -11,38 +11,23 @@ export function WallpaperImage({ id }: WallpaperData) {
 
 export function WallpapersList({ list }: { list: WallpaperData[] }) {
   return (
-    <div
-      x-data="{
-        opened: false,
-        active: null,
-        index: null,
-        open() {
-        }
-        close() {
-        }
-        next() {
-        }
-        prev() {
-        }
-      }"
-      x-on:keyup="next"
-    >
+    <div>
       <div>
         <ul class="flex flex-col">
           {list.map((wallpaper) => (
             <li key={wallpaper.id}>
-              <WallpaperImage {...wallpaper} />
+              <button
+                type="button"
+                hx-get={`/images/${wallpaper.id}`}
+                hx-target="body"
+                hx-swap="beforeend"
+              >
+                <WallpaperImage {...wallpaper} />
+              </button>
             </li>
           ))}
         </ul>
       </div>
-      <template x-teleport="body">
-        <div x-show="opened">
-          <div>
-            <img />
-          </div>
-        </div>
-      </template>
     </div>
   );
 }
