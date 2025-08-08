@@ -11,7 +11,7 @@ export default function CharacterList({ list }: { list: ArcanistData[] }) {
         {list.map((character) => (
           <li
             key={character.id}
-            x-show={`${character.id}.toLowerCase().includes(query.toLowerCase())`}
+            x-show={`'${character.id}'.toLowerCase().includes(query.toLowerCase())`}
           >
             <button
               type="button"
