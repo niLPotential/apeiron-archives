@@ -38,7 +38,7 @@ app.get("/characters/:id", async (c) => {
   const id = c.req.param("id");
   const data =
     await sql`SELECT * FROM pictures WHERE ${id} = ANY (arcanists)` as WallpaperData[];
-  return c.render(
+  return c.html(
     <WallpapersList list={data} />,
   );
 });

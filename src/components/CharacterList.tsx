@@ -3,31 +3,25 @@ import type { ArcanistData } from "../server/db.ts";
 
 export default function CharacterList({ list }: { list: ArcanistData[] }) {
   return (
-    <div
-      x-data={`{
-        query: '',
-        allOptions: ${JSON.stringify(list)},
-        get options() {
-          return this.allOptions.filter((option) => 
-            option.id.toLowerCase().includes(this.query.toLowerCase())
-          )
-        }
-      }`}
-    >
+    <div x-data="{query: ''}">
       <div class="relative">
         <input type="search" x-model="query" />
       </div>
       <ul class="flex flex-col overflow-auto gap-5">
-        <template x-for="item in options" x-bind:key="item.id">
-          <li>
-            <a
-              x-bind:href="'/wallpapers/characters/' + item.id.toString()"
-              class="border rounded-full p-2"
+        {list.map((character) => (
+          <li
+            key={character.id}
+            x-show={`${character.id}toLowerCase().includes(query.toLowerCase())`}
+          >
+            <button
+              type="button"
+              hx-get={`/wallpapers/characters/${character.id}`}
+              hx-target="main"
             >
-              <span x-text="item.kr"></span>
-            </a>
+              {character.kr}
+            </button>
           </li>
-        </template>
+        ))}
       </ul>
     </div>
   );
