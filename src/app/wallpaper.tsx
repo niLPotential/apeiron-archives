@@ -18,7 +18,7 @@ export function WallpapersList({ list }: { list: WallpaperData[] }) {
             <li key={wallpaper.id}>
               <button
                 type="button"
-                hx-get={`/images/${wallpaper.id}`}
+                hx-get={`/wallpapers/images/${wallpaper.id}`}
                 hx-target="body"
                 hx-swap="beforeend"
               >
