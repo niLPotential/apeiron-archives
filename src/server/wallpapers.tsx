@@ -52,7 +52,12 @@ app.get("/images/:id", async (c) => {
     path: `./raw/${data.id}.jpg`,
   });
   return c.html(
-    <div x-data x-on:click="$el.remove()">
+    <div
+      x-data
+      class="fixed inset-0 bg-black/50 z-1000 flex flex-col items-center"
+    >
+      <div x-on:click="$el.parentNode.remove()" class="absolute -z-1 inset-0">
+      </div>
       <img src={src} />
     </div>,
   );
