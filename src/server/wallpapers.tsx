@@ -13,11 +13,11 @@ app.use(jsxRenderer(async ({ children, Layout }) => {
 
   return (
     <Layout>
-      <div class="relative flex flex-row">
-        <nav class="fixed left-0 h-screen shrink-0 flex flex-col w-80">
+      <div class="relative flex w-full">
+        <nav class="fixed left-0 h-screen shrink-0 flex flex-col">
           <CharacterList list={arcanists} />
         </nav>
-        <main class="w-full">
+        <main>
           {children}
         </main>
       </div>
@@ -58,20 +58,22 @@ app.get("/images/:id", async (c) => {
     >
       <div x-on:click="$el.parentNode.remove()" class="absolute -z-1 inset-0">
       </div>
-      <img src={src} />
-      <div>{data.version}</div>
-      <div>
-        {data.arcanists.map((character) => (
-          <button
-            type="button"
-            key={character}
-            hx-get={`/wallpapers/characters/${character}`}
-            hx-target="main"
-          >
-          </button>
-        ))}
+      <img src={src} class="w-1/2" />
+      <div class="flex bg-white">
+        <div>{data.version}</div>
+        <div>
+          {data.arcanists.map((character) => (
+            <button
+              type="button"
+              key={character}
+              hx-get={`/wallpapers/characters/${character}`}
+              hx-target="main"
+            >
+            </button>
+          ))}
+        </div>
+        <a>{data.source}</a>
       </div>
-      <a>{data.source}</a>
     </div>,
   );
 });
