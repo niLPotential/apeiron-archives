@@ -4,7 +4,6 @@ import { jsxRenderer } from "@hono/hono/jsx-renderer";
 import type { ArcanistData, WallpaperData } from "./db.ts";
 import { imagekit, sql } from "./db.ts";
 import { WallpapersList } from "../app/wallpaper.tsx";
-import CharacterList from "../components/CharacterList.tsx";
 
 const app = new Hono();
 
@@ -13,14 +12,34 @@ app.use(jsxRenderer(async ({ children, Layout }) => {
 
   return (
     <Layout>
-      <div class="relative flex w-full">
-        <nav class="fixed left-0 h-screen shrink-0 flex flex-col">
-          <CharacterList list={arcanists} />
-        </nav>
-        <main>
-          {children}
-        </main>
-      </div>
+      <nav
+        class="left-0 h-screen shrink-0 flex flex-col"
+        x-data="{query: ''}"
+      >
+        <div>
+          <input type="search" x-model="query" />
+        </div>
+        <ul class="flex flex-col overflow-auto gap-5">
+          {arcanists.map((character) => (
+            <li
+              key={character.id}
+              x-show={`'${character.id}'.toLowerCase().includes(query.toLowerCase())`}
+            >
+              <button
+                type="button"
+                hx-get={`/wallpapers/characters/${character.id}`}
+                hx-target="main"
+                class="border"
+              >
+                {character.kr}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <main>
+        {children}
+      </main>
     </Layout>
   );
 }));
@@ -59,9 +78,9 @@ app.get("/images/:id", async (c) => {
       <div x-on:click="$el.parentNode.remove()" class="absolute -z-1 inset-0">
       </div>
       <img src={src} class="w-1/2" />
-      <div class="flex bg-white">
+      <div class="flex bg-white gap-2">
         <div>{data.version}</div>
-        <div>
+        <div class="flex flex-col">
           {data.arcanists.map((character) => (
             <button
               type="button"
@@ -69,10 +88,11 @@ app.get("/images/:id", async (c) => {
               hx-get={`/wallpapers/characters/${character}`}
               hx-target="main"
             >
+              {character}
             </button>
           ))}
         </div>
-        <a>{data.source}</a>
+        <a src={data.source}>Source</a>
       </div>
     </div>,
   );
