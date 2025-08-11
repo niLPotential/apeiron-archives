@@ -59,6 +59,19 @@ app.get("/images/:id", async (c) => {
       <div x-on:click="$el.parentNode.remove()" class="absolute -z-1 inset-0">
       </div>
       <img src={src} />
+      <div>{data.version}</div>
+      <div>
+        {data.arcanists.map((character) => (
+          <button
+            type="button"
+            key={character}
+            hx-get={`/wallpapers/characters/${character}`}
+            hx-target="main"
+          >
+          </button>
+        ))}
+      </div>
+      <a>{data.source}</a>
     </div>,
   );
 });
