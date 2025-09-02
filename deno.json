@@ -1,7 +1,8 @@
 {
   "tasks": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "preview": "deno serve --allow-read dist/server/app.js"
   },
   "nodeModulesDir": "auto",
   "imports": {
