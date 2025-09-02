@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/client/index.ts"></script>
+    <title>domco+htmx</title>
+  </head>
+  <body>
+    <main>
+      <button
+        hx-post="/clicked"
+        hx-swap="innerHTML"
+        class="bg-black text-white"
+      >
+        Click Me
+      </button>
+    </main>
+  </body>
+</html>
