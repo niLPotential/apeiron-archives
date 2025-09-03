@@ -3,8 +3,9 @@ import { customElement, property } from "lit/decorators.js";
 
 @customElement("my-counter")
 export class MyCounter extends LitElement {
-  @property()
-  count = 0;
+  @property({ type: Number })
+  // @ts-ignore property
+  count;
 
   override render() {
     return html`
