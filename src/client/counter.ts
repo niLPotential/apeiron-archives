@@ -6,7 +6,7 @@ export class MyElement extends LitElement {
   @property()
   count = 0;
 
-  render() {
+  override render() {
     return html`
       <button @click="${() => this.count++}">${this.count}</button>
     `;
