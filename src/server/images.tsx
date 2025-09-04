@@ -4,7 +4,6 @@ const app = new Hono();
 
 app.get("/random", (c) => {
   const count = c.req.query("q");
-
   return c.html(
     <div>User requested ${count} images.</div>,
   );
