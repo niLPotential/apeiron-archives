@@ -1,7 +1,7 @@
 {
   "version": "5",
   "specifiers": {
-    "jsr:@hono/hono@^4.9.5": "4.9.5",
+    "jsr:@hono/hono@^4.9.6": "4.9.6",
     "npm:@deno/vite-plugin@^1.0.5": "1.0.5_vite@7.1.4__@types+node@24.2.0__picomatch@4.0.3_@types+node@24.2.0",
     "npm:@types/node@*": "24.2.0",
     "npm:alpinejs@^3.15.0": "3.15.0",
@@ -12,8 +12,8 @@
     "npm:vite@^7.1.4": "7.1.4_@types+node@24.2.0_picomatch@4.0.3"
   },
   "jsr": {
-    "@hono/hono@4.9.5": {
-      "integrity": "9979382257287abb33e98893247a97660adc0a9239cf37d57e207e3592040a96"
+    "@hono/hono@4.9.6": {
+      "integrity": "b85abb0013d167a290b1808d1d4d542dee269df31d4f47122023259fdd7e184b"
     }
   },
   "npm": {
@@ -1027,7 +1027,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@hono/hono@^4.9.5",
+      "jsr:@hono/hono@^4.9.6",
       "npm:@deno/vite-plugin@^1.0.5",
       "npm:alpinejs@^3.15.0",
       "npm:domco@^4.3.0",
