@@ -12,6 +12,7 @@
   "imports": {
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.5",
     "@hono/hono": "jsr:@hono/hono@^4.9.5",
+    "alpinejs": "npm:alpinejs@^3.15.0",
     "domco": "npm:domco@^4.3.0",
     "htmx.org": "npm:htmx.org@^2.0.6",
     "unocss": "npm:unocss@^66.5.0",
