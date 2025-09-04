@@ -2,7 +2,7 @@ import { html } from "client:page";
 import { Hono } from "@hono/hono";
 import { serveStatic } from "@hono/hono/deno";
 
-import images from "./images.ts";
+import images from "./images.tsx";
 import dialog from "./dialog.tsx";
 
 const app = new Hono();
