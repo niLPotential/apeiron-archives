@@ -4,7 +4,6 @@ import { jsxRenderer } from "@hono/hono/jsx-renderer";
 
 import { src } from "client:script";
 import images from "./images.tsx";
-import dialog from "./dialog.tsx";
 
 declare module "@hono/hono" {
   interface ContextRenderer {
@@ -53,7 +52,12 @@ app.get("/", (c) =>
 
 app.route("/images", images);
 
-app.route("/dialog", dialog);
+app.get("/dialog", (c) =>
+  c.html(
+    <div x-data x-ref="dialog">
+      <button type="button" x-on:click="$refs.dialog.remove()">Close</button>
+    </div>,
+  ));
 app.use("/_immutable/*", serveStatic({ root: "./dist/client/" }));
 
 export default app;
