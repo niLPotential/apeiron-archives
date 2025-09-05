@@ -42,6 +42,7 @@ app.get("/", (c) =>
         hx-get="/dialog"
         hx-target="main"
         hx-swap="beforeend"
+        hx-push-url
         class="bg-black text-white"
       >
         Open
