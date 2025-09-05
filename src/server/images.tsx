@@ -26,12 +26,12 @@ app.get("/", (c) => c.render(<div>Home</div>));
 
 app.get("/random", (c) =>
   c[c.req.header("HX-Request") ? "html" : "render"](
-    <div>User requested random images.</div>,
+    <ImagesList title="random images" />,
   ));
 
 app.get("/favorites", (c) =>
   c[c.req.header("HX-Request") ? "html" : "render"](
-    <div>User requested favorite images.</div>,
+    <ImagesList title="favorite images" />,
   ));
 
 app.get("/characters", (c) =>
@@ -41,7 +41,7 @@ app.get("/characters", (c) =>
 app.get("/characters/:id", (c) => {
   const id = c.req.param("id");
   return c[c.req.header("HX-Request") ? "html" : "render"](
-    <div>User requested images of ${id}.</div>,
+    <ImagesList title={`images of ${id}`} />,
   );
 });
 
@@ -53,8 +53,33 @@ app.get("/versions", (c) => {
 app.get("/versions/:id", (c) => {
   const id = c.req.param("id");
   return c[c.req.header("HX-Request") ? "html" : "render"](
-    <div>User requested images of ${id}.</div>,
+    <ImagesList title={`images of ${id}`} />,
   );
 });
 
 export default app;
+
+function ImagesList({ title }: { title: string }) {
+  return (
+    <>
+      <p>User requested {title}.</p>
+      <ol>
+        <li>
+          <button type="button">1</button>
+        </li>
+        <li>
+          <button type="button">2</button>
+        </li>
+        <li>
+          <button type="button">3</button>
+        </li>
+        <li>
+          <button type="button">4</button>
+        </li>
+        <li>
+          <button type="button">5</button>
+        </li>
+      </ol>
+    </>
+  );
+}
