@@ -4,6 +4,7 @@
     "jsr:@hono/hono@^4.9.6": "4.9.6",
     "npm:@deno/vite-plugin@^1.0.5": "1.0.5_vite@7.1.4__@types+node@24.2.0__picomatch@4.0.3_@types+node@24.2.0",
     "npm:@types/node@*": "24.2.0",
+    "npm:@unocss/reset@^66.5.0": "66.5.0",
     "npm:alpinejs@^3.15.0": "3.15.0",
     "npm:domco@^4.3.0": "4.3.0_vite@7.1.4__@types+node@24.2.0__picomatch@4.0.3_@types+node@24.2.0",
     "npm:htmx.org@^2.0.6": "2.0.6",
@@ -1029,6 +1030,7 @@
     "dependencies": [
       "jsr:@hono/hono@^4.9.6",
       "npm:@deno/vite-plugin@^1.0.5",
+      "npm:@unocss/reset@^66.5.0",
       "npm:alpinejs@^3.15.0",
       "npm:domco@^4.3.0",
       "npm:htmx.org@^2.0.6",
