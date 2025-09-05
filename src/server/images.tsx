@@ -3,8 +3,8 @@ import { jsxRenderer } from "@hono/hono/jsx-renderer";
 
 const app = new Hono();
 
-app.use(jsxRenderer(({ children }) => (
-  <>
+app.use(jsxRenderer(({ children, Layout }) => (
+  <Layout>
     <nav hx-boost hx-push-url hx-target="main">
       <ul>
         <li>
@@ -19,7 +19,7 @@ app.use(jsxRenderer(({ children }) => (
       </ul>
     </nav>
     <main>{children}</main>
-  </>
+  </Layout>
 )));
 
 app.get("/", (c) => c.render(<div>Home</div>));
@@ -57,28 +57,29 @@ app.get("/versions/:id", (c) => {
   );
 });
 
+app.get("/ids/:id", (c) => {
+  const id = c.req.param("id");
+  return c.html(
+    <div x-data x-ref="dialog" class="border-solid">
+      <p>{id}</p>
+      <button type="button" x-on:click="$refs.dialog.remove()">Close</button>
+    </div>,
+  );
+});
+
 export default app;
 
 function ImagesList({ title }: { title: string }) {
+  const data = [1, 2, 3, 4, 5];
   return (
     <>
       <p>User requested {title}.</p>
-      <ol>
-        <li>
-          <button type="button">1</button>
-        </li>
-        <li>
-          <button type="button">2</button>
-        </li>
-        <li>
-          <button type="button">3</button>
-        </li>
-        <li>
-          <button type="button">4</button>
-        </li>
-        <li>
-          <button type="button">5</button>
-        </li>
+      <ol hx-target="body" hx-swap="beforeend">
+        {data.map((id) => (
+          <li>
+            <button type="button" hx-get={`/images/ids/${id}`}>{id}</button>
+          </li>
+        ))}
       </ol>
     </>
   );
