@@ -12,11 +12,13 @@ app.use(jsxRenderer(({ children }) => (
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      {src.module.map((_src) => <script type="module" src={_src} key="" />)}
-      {src.preload.map((href) => (
-        <link rel="preload" crossorigin="" href={href} key="" />
+      {src.module.map((_src, i) => <script type="module" src={_src} key={i} />)}
+      {src.preload.map((href, i) => (
+        <link rel="preload" crossorigin="" href={href} key={i} />
       ))}
-      {src.style.map((href) => <link rel="stylesheet" href={href} key="" />)}
+      {src.style.map((href, i) => (
+        <link rel="stylesheet" href={href} key={i} />
+      ))}
       <title>Apeiron Archives</title>
     </head>
     <body>
