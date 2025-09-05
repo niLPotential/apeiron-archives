@@ -53,12 +53,16 @@ app.get("/", (c) =>
 
 app.route("/images", images);
 
-app.get("/dialog", (c) =>
-  c.html(
+app.get("/dialog", (c) => {
+  if (!c.req.header("HX-Request")) {
+    return c.redirect("/");
+  }
+  return c.html(
     <div x-data x-ref="dialog">
       <button type="button" x-on:click="$refs.dialog.remove()">Close</button>
     </div>,
-  ));
+  );
+});
 app.use("/_immutable/*", serveStatic({ root: "./dist/client/" }));
 
 export default app;
