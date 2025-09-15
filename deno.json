@@ -2,7 +2,8 @@
   "tasks": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "deno serve --allow-read dist/server/app.js"
+    "preview": "deno serve --allow-read dist/server/app.js",
+    "unocss:fix": "eslint --fix"
   },
   "nodeModulesDir": "auto",
   "compilerOptions": {
@@ -12,10 +13,13 @@
   "imports": {
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.5",
     "@hono/hono": "jsr:@hono/hono@^4.9.7",
+    "@unocss/eslint-config": "npm:@unocss/eslint-config@^66.5.1",
     "@unocss/reset": "npm:@unocss/reset@^66.5.1",
     "alpinejs": "npm:alpinejs@^3.15.0",
     "domco": "npm:domco@^4.3.1",
+    "eslint": "npm:eslint@^9.35.0",
     "htmx.org": "npm:htmx.org@^2.0.7",
+    "typescript-eslint": "npm:typescript-eslint@^8.43.0",
     "unocss": "npm:unocss@^66.5.1",
     "vite": "npm:vite@^7.1.5"
   }
