@@ -13,6 +13,7 @@
   "imports": {
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.5",
     "@hono/hono": "jsr:@hono/hono@^4.9.7",
+    "@types/alpinejs": "npm:@types/alpinejs@^3.13.11",
     "@unocss/eslint-config": "npm:@unocss/eslint-config@^66.5.1",
     "@unocss/reset": "npm:@unocss/reset@^66.5.1",
     "alpinejs": "npm:alpinejs@^3.15.0",
